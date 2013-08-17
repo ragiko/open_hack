@@ -37,6 +37,8 @@ class UserEdit
             $this->validator->assert($input);
         } catch (\InvalidArgumentException $e) {
             $this->errors = $e->findMessages([
+                                                 'name' => '名前を入力してください',
+                                                 'mailaddress' => 'メールアドレスを入力してください',
                                                  'name.notEmpty' => '名前を入力してください',
                                                  'name.length' => '名前は{{minValue}}〜{{maxValue}}文字内で入力してください',
                                                  'mailaddress.email' => 'メールアドレスを入力してください',

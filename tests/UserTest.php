@@ -190,4 +190,31 @@ class UserTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(User::SALT_PREFIX.'_user_id', User::generateSalt('_user_id'));
     }
+
+    /**
+     * @see https://github.com/VG-Tech-Dojo/GroupWorkBase/issues/44
+     */
+    public function test会員登録時に空POSTされた場合はバリデーションでエラーになること()
+    {
+        $validator = new Vg\Validator\UserRegister;
+
+        $input = [];
+        $this->assertFalse($validator->validate($input));
+    }
+
+    /**
+     * @see https://github.com/VG-Tech-Dojo/GroupWorkBase/issues/44
+     */
+    public function test会員登録時に空POSTされた場合はバリデーションでエラー文言がセットされること()
+    {
+        $validator = new Vg\Validator\UserRegister;
+
+        $input = [];
+        $validator->validate($input);
+        $errors = $validator->errors();
+
+        $this->assertTrue(isset($errors['name']));
+        $this->assertTrue(isset($errors['mailaddress']));
+        $this->assertTrue(isset($errors['password']));
+    }
 }
