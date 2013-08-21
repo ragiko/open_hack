@@ -102,7 +102,7 @@ use Respect\Validation\Validator as v;
      *
      * @return callable
      */
-    $rediretIfNotLogin = function ( $session ) {
+    $redirectIfNotLogin = function ( $session ) {
         return function () use ( $session ) {
             if ( $session->get('isLogin') !== true ) {
                 $app = \Slim\Slim::getInstance();
@@ -112,7 +112,7 @@ use Respect\Validation\Validator as v;
         };
     };
 
-    $app->get('/user/edit', $rediretIfNotLogin($container['session']), function () use ($app, $container) {
+    $app->get('/user/edit', $redirectIfNotLogin($container['session']), function () use ($app, $container) {
             $repository = $container['repository.user'];
             $user = $repository->findById($container['session']->get('user.id'));
 
@@ -121,7 +121,7 @@ use Respect\Validation\Validator as v;
         ->name('user_edit')
     ;
 
-    $app->post('/user/update', function () use ($app, $container) {
+    $app->post('/user/update', $redirectIfNotLogin($container['session']), function () use ($app, $container) {
             $input = $app->request()->post();
 
             $validator = new \Vg\Validator\UserEdit();
