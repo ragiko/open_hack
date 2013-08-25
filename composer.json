@@ -9,7 +9,6 @@
         "phpunit/phpunit": "3.7.20",
         "phake/phake": "v1.0.3",
         "piece/stagehand-testrunner": "v3.6.1",
-        "symfony/validator": "v2.2.1",
         "respect/validation": "0.4.4"
     },
     "minimum-stability": "dev",

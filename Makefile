@@ -13,6 +13,8 @@ setup:
 install: setup
 	$(PHP) composer.phar install
 	$(PHP) vendor/bin/testrunner compile -p vendor/autoload.php
+update:
+	$(PHP) composer.phar update
 test:
 	$(PHP) ./vendor/bin/phpunit --exclude-group study1 --bootstrap ./vendor/autoload.php -c ./phpunit.xml ./tests
 testrunner:
