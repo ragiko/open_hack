@@ -7,12 +7,13 @@ GroupWork ベースアプリ (VOYAGE GROUP)
 
 * Slim2
 * Twig
-* Pimple
+* Pimple2
 
 
 
 ## インストール
 
+    $ make setup
     $ make install
 
 ## 設定
@@ -46,9 +47,7 @@ GroupWork ベースアプリ (VOYAGE GROUP)
 
 ## テスト実行
 
-    $ make testrunner
-
-テストランナーは src/ と tests/ のファイル更新を監視し、ファイルが更新されると自動的にテストを実行するツールです
+    $ make test
 
 ## インデントを整形
 

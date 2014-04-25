@@ -2,14 +2,13 @@
     "name": "vg-tech-dojo/group-work-base",
     "require": {
         "php": ">=5.4.0",
-        "pimple/pimple": "v1.0.2",
-        "slim/slim": "2.2.0",
-        "slim/extras": "2.0.3",
-        "twig/twig": "v1.13.0",
-        "phpunit/phpunit": "3.7.20",
-        "phake/phake": "v1.0.3",
-        "piece/stagehand-testrunner": "v3.6.1",
-        "respect/validation": "0.4.4"
+        "pimple/pimple": "v2.0.0",
+        "slim/slim": "2.4.3",
+        "slim/views": "0.1.2",
+        "twig/twig": "v1.15.1",
+        "phpunit/phpunit": "4.0.17",
+        "phake/phake": "v1.0.5",
+        "respect/validation": "0.5.0"
     },
     "minimum-stability": "dev",
     "autoload": {
