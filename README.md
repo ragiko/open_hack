@@ -45,6 +45,30 @@ GroupWork ベースアプリ (VOYAGE GROUP)
 
 ブラウザで http://localhost:9999/ にアクセスすればOK
 
+## インストールされたJavaScriptのライブラリを確認
+
+bowerを使って依存管理されています。詳しは Makefile参照
+
+    $ make list
+
+## 外部JavaScriptライブラリを追加する場合
+
+    $ make bower COMMAND=search ARG=power
+    /var/www/GroupWorkBase/node_modules/bower/bin/bower search power
+    Search results:
+
+        jquery-powertip git://github.com/stevenbenner/jquery-powertip.git
+        empower git://github.com/twada/empower.git
+        espower git://github.com/twada/espower.git
+        power-assert-formatter git://github.com/twada/power-assert-formatter.git
+        power-assert git://github.com/twada/power-assert.git
+        powerange git://github.com/abpetkov/powerange.git
+        jquery-power-plugin git://github.com/3den/jquery-power-plugin.git
+        espower-loader git://github.com/twada/espower-loader.git
+        f-empower git://github.com/ognivo/f-empower.git
+
+    $ make bower COMMAND=install ARG=power-assert
+
 ## テスト実行
 
     $ make test

@@ -2,6 +2,9 @@ PHP=$(shell which php)
 CURL=$(shell which curl)
 HOST=localhost
 PORT=9999
+NPM=$(shell which npm)
+BOWER=$(shell pwd)/node_modules/bower/bin/bower
+COMMAND=help
 
 all: test
 
@@ -12,14 +15,21 @@ setup:
 	$(CURL) -SslO https://phar.phpunit.de/phpunit.phar
 install: setup
 	$(PHP) composer.phar install
-	$(PHP) vendor/bin/testrunner compile -p vendor/autoload.php
+	$(NPM) install
+	$(BOWER) install
 update:
 	$(PHP) composer.phar update
 test:
 	$(PHP) phpunit.phar --exclude-group study1 --bootstrap ./vendor/autoload.php -c ./phpunit.xml ./tests
+
 fixer:
 	$(PHP) php-cs-fixer.phar fix ./src --level=all
 server:
 	$(PHP) -S $(HOST):$(PORT) -t ./public_html
 mig-up:
 	$(PHP) dbup.phar up
+
+list:
+	$(BOWER) list --path
+bower:
+	$(BOWER) $(COMMAND) $(ARG)
