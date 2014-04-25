@@ -8,9 +8,9 @@ $container = include __DIR__ . '/config.php';
 
 // Twig
 $container['twig'] = $container->protect(function($request, $router) use ($container) {
-        \Slim\Extras\Views\Twig::$twigTemplateDirs = $container['twig.templateDir'];
 
-        $twig = new \Slim\Extras\Views\Twig;
+        $twig = new \Slim\Views\Twig;
+        $twig->twigTemplateDirs = $container['twig.templateDir'];
         $env = $twig->getEnvironment();
         // asset function
         $env->addFunction(new Twig_SimpleFunction('asset', function ($path) use ($request) {
@@ -33,18 +33,18 @@ $container['twig'] = $container->protect(function($request, $router) use ($conta
     });
 
 // データベース PDO
-$container['db'] = $container->share(function($c){
+$container['db'] = function($c){
         return \Vg\Database::connection($c['db.host'], $c['db.database'], $c['db.user'], $c['db.password']);
-    });
+    };
 
 // セッション
-$container['session'] = $container->share(function() {
+$container['session'] = function() {
         return new \Vg\Session();
-    });
+    };
 
 // ユーザーリポジトリ
-$container['repository.user'] = $container->share(function($c){
+$container['repository.user'] = function($c){
         return new \Vg\Repository\UserRepository($c['db']);
-    });
+    };
 
 return $container;
