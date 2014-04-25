@@ -5,7 +5,7 @@
 $app->get('/', function() use ($app) {
         $app->render('top/index.html.twig');
     })
-    ->name('welcome')
+    ->name('top')
 ;
 
 /**
@@ -18,5 +18,5 @@ $app->get('/hello/:name', function ($name) use ($app, $container) {
         $app->render('top/hello.html.twig', ['name' => $name, 'phpcode' => $phpcode, 'twigcode' => $twigcode]);
     })
     ->name('hello')
-    ->conditions(array('name' => '\w+'))
+    ->conditions(['name' => '\w+'])
 ;

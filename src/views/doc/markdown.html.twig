@@ -2,11 +2,6 @@
 
 {% block contents %}
     <!-- Main hero unit for a primary marketing message or call to action -->
-    <div class="hero-unit">
-        <h1>GroupWorkBase の基礎</h1>
-        <p>About GroupWorkBase.</p>
-    </div>
-
     <p id="document">
         {{ markdown|raw }}
     </p>
@@ -16,6 +11,11 @@
 {% endblock %}
 
 {% block javascript %}
-    <script src="{{ asset('/js/markdown.js') }}"></script>
-    <script src="{{ asset('/js/markdown.app.js') }}"></script>
+  <script src="{{ asset('/bower_components/marked/lib/marked.js') }}"></script>
+  <script>
+  (function(){
+    var doc = $('#document');
+    doc.html(marked(doc.html()));  
+  })()
+  </script>
 {% endblock %}

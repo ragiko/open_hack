@@ -1,4 +1,5 @@
-## GroupWorkBase の基本について
+
+## GroupWorkBase の基本構成
 
 GroupWorkBase は Slim2 という PHP製Webアプリケーション用 マイクロフレームワークで構築されています。
 
@@ -16,7 +17,7 @@ GroupWorkBase は Slim2 という PHP製Webアプリケーション用 マイク
  - アプリケーションのファイルは `src/app/xxx.php` にあります
 - ルーティングにマッチしたアプリケーションの無名関数が処理される
 - `render` メソッドにテンプレートのパスを指定し、レンダリングを実行
- - テンプレートのパスは `src/vews`
+ - テンプレートのパスは `src/views`
 
 ### テンプレートエンジン
 
@@ -28,8 +29,10 @@ TwigとSlimとの連携は Slim に用意されている拡張機能パッケー
 GroupWorkBase には "会員登録" "ログイン/ログアウト" "登録内容変更" の簡単な実装が組み込まれています。
 実際に動かしてみて `src/app/user.php` のコードを参考に勉強してみてください。
 
-### Backbone.js について
+### PHPのパッケージ管理
 
-jQueryそのままではなく、Backbone.jsを使うこともできます。
-たとえば、このページのドキュメントは Markdown形式で書かれていて、JavaScriptのライブラリでHTMLに変換しています。
-その処理をjQueryそのままではなく、Backbone.jsで書いています。
+composerでライブラリをパケージ管理しています。どのパッケージが含まれているかは `composer.json` を見てください
+
+### JavaScriptの外部ライブラリ
+
+bowerでライブラリのパッケージ管理しています。どのパッケ０時が含まれているかは `bower.json` を見てください
