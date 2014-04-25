@@ -3,111 +3,184 @@
 {% block contents %}
     <!-- Main hero unit for a primary marketing message or call to action -->
     <div class="hero-unit">
-        <h1>GroupWorkBase について</h1>
-        <p>About GroupWorkBase.</p>
+        <h1>リンク</h1>
+        <p>GroupWorkBase で利用されている技術・ライブラリについて</p>
     </div>
 
-    <!-- Example row of columns -->
-    <div class="row">
-        <div class="span3">
-            <h2>PHP</h2>
-            <p>
-                GroupWorkBase はPHPで書かれています。PHPのバージョンは 5.4 以上で動作します。
-                公式ドキュメントが一番正確なので、php.net/<関数名>で検索する癖をつけましょう
-            </p>
-            <p><a class="btn" href="http://www.php.net/manual/ja/">PHP 公式ドキュメント &raquo;</a></p>
-        </div>
-        <div class="span3">
-            <h2>Slim2</h2>
-            <p>
-                GroupWorkBase はSlim2 というシンプルなマイクロフレームワークで構築されています。
-                ルーティングに対する処理を無名関数で書いていきます。
-                <code>src/app/*.php</code>ファイルを見てみてください。
-            </p>
-            <p><a class="btn" href="http://docs.slimframework.com/">Slim2 公式ドキュメント &raquo;</a></p>
-        </div>
-        <div class="span3">
-            <h2>Twig</h2>
-            <p>
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>PHP</h3>
+        <p>
+          GroupWorkBase はPHPで書かれています。PHPのバージョンは 5.4 以上で動作します。
+          公式ドキュメントが一番正確なので、<code>php.net/<関数名></code> で検索する癖をつけましょう
+        </p>
+        <p>
+	  <a href="http://www.php.net/manual/ja/" class="btn btn-primary" role="button">PHP 公式ドキュメント  &raquo;</a>
+	</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>Slim2</h3>
+        <p>
+          GroupWorkBase はSlim2 というシンプルなマイクロフレームワークで構築されています。
+          ルーティングに対する処理を無名関数で書いていきます。
+          <code>src/app/*.php</code>ファイルを見てみてください。
+        </p>
+        <p>
+	  <a href="http://docs.slimframework.com" class="btn btn-primary" role="button">Slim2 公式ドキュメント &raquo;</a>
+	</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>Twig</h3>
+        <p>
                 Twigは Python の <a href="http://jinja.pocoo.org/">jinja2</a> にインスパイアされた PHPで最もメジャーなテンプレートエンジンです。
                 GroupWorkBase では 拡張子が .twig のファイルが テンプレートファイルになります。
-            </p>
-            <p><a class="btn" href="http://twig.sensiolabs.org/documentation">Twig 公式ドキュメント &raquo;</a></p>
-        </div>
-        <div class="span3">
-            <h2>PHPUnit</h2>
-            <p>
+        </p>
+        <p>
+	  <a href="http://twig.sensiolabs.org/documentation" class="btn btn-primary" role="button">Twig 公式ドキュメント &raquo;</a>
+	</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>PHPUnit</h3>
+        <p>
                 アプリケーションの単体テスト(UT)としてPHPUnitを利用できるようにしています。
                 テストの実行は<code>$ make test</code> を実行するだけです。
-            </p>
-            <p><a class="btn" href="http://phpunit.de/manual/4.0/ja/index.html">PHPunit 公式ドキュメント &raquo;</a></p>
-        </div>
+        </p>
+        <p>
+	  <a href="http://phpunit.de/manual/4.0/ja/index.html" class="btn btn-primary" role="button">PHPunit 公式ドキュメント &raquo;</a>
+	</p>
+      </div>
     </div>
-    <div class="row">
-        <div class="span3">
-            <h2>JavaScript</h2>
-            <p>
-                JavaScriptを利用して、View部分のロジックを組み立てています。
-            </p>
-            <p><a class="btn" href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference">JavaScript リファレンス(MDN) &raquo;</a></p>
-        </div>
-        <div class="span3">
-            <h2>jQuery</h2>
-            <p>
-                JavaScriptのデファクトスタンダートなライブラリです。DOM操作などが簡単に行えます
-            </p>
-            <p><a class="btn" href="http://api.jquery.com/">jQuery API &raquo;</a></p>
-        </div>
-        <div class="span3">
-            <h2>underscore.js</h2>
-            <p>
-                JavaScriptでより可読性を高めてコードを書くことができる便利なライブラリです。
-            </p>
-            <p><a class="btn" href="http://underscorejs.org/">underscore.js &raquo;</a></p>
-        </div>
-        <div class="span3">
-            <h2>Backbone.js</h2>
-            <p>
-                軽量なJavaScriptフレームワークです。Backbone.jsを使うことで、サーバーサイド、クライアントサイド両面で汎用化・モジュール化した設計が可能になります。
-            </p>
-            <p><a class="btn" href="http://backbonejs.org/">Backbone.js &raquo;</a></p>
-        </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>JavaScript</h3>
+        <p>
+          JavaScriptを利用して、View部分のロジックを組み立てています。
+        </p>
+        <p>
+	  <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference" class="btn btn-primary" role="button">JavaScript リファレンス(MDN) &raquo;</a>
+	</p>
+      </div>
     </div>
-    <div class="row">
-        <div class="span3">
-            <h2>Makefile</h2>
-            <p>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>jQuery</h3>
+        <p>
+          JavaScriptのデファクトスタンダートなライブラリです。DOM操作などが簡単に行えます
+        </p>
+        <p>
+          <a class="btn btn-primary" role="button" href="http://api.jquery.com/">jQuery API &raquo;</a>
+	</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>underscore.js</h3>
+        <p>
+          JavaScriptでより可読性を高めてコードを書くことができる便利なライブラリです。
+        </p>
+        <p>
+	  <a href="http://underscorejs.org/" class="btn btn-primary" role="button">underscore.js &raquo;</a>
+	</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>Vue.js</h3>
+        <p>
+	  MVVMなJavaScriptのフレームワークです。シンプルに双方向データバインディングが可能です
+        </p>
+        <p>
+	  <a href="http://vuejs.org/" class="btn btn-primary" role="button">Vue.js &raquo;</a>
+	</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>Makefile</h3>
+        <p>
                 アプリケーションの設定や運用に必要な作業はすべてMakefileに記述し <code>$ make xxx</code>で実行できるようにしています。
                 詳しくは<code>README.md</code>を参照してください。
-            </p>
-            <p><a class="btn" href="http://ja.wikipedia.org/wiki/Make">make &raquo;</a></p>
-        </div>
-        <div class="span3">
-            <h2>Pimple</h2>
-            <p>
+        </p>
+        <p>
+	  <a class="btn btn-primary" role="button"  href="http://ja.wikipedia.org/wiki/Make">make &raquo;</a>
+	</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>Pimple</h3>
+        <p>
                 各ライブラリやアプリケーションの依存関係解決のためにPimpleというシンプルなサービスロケータを利用しています。
                 <code>$bootstrap.php</code> を覗くと実際に使われ方がわかります。
                 サービスロケータを使うことで、各ライブラリでの依存関係を解決しています。
-            </p>
-            <p><a class="btn" href="http://pimple.sensiolabs.org/">Pimple 公式サイト &raquo;</a></p>
-        </div>
-        <div class="span3">
-            <h2>Twitter Bootstrap</h2>
-            <p>
-                CSSはTwitter Bootstrapを利用しています。
-            </p>
-            <p><a class="btn" href="http://twitter.github.io/bootstrap/">Twitter Bootstrap 公式サイト &raquo;</a></p>
-        </div>
-        <div class="span3">
-            <h2>MySQL</h2>
-            <p>
-                データベースはMySQLを利用します。
-                また、データベースのマイグレーションを行うためのツールとしてシンプルなDbupを使います。@brtriverがOSSで開発し公開しているプロダクトです。
-            </p>
-            <p><a class="btn" href="http://dev.mysql.com/doc/refman/5.1/ja/index.html">MySQL 5.1 リファレンスマニュアル &raquo;</a></p>
-            <p><a class="btn" href="http://brtriver.github.io/dbup/ja/">Dbup ドキュメント &raquo;</a></p>
-        </div>
-
+        </p>
+        <p>
+	  <a class="btn btn-primary" role="button" href="http://pimple.sensiolabs.org/">Pimple 公式サイト &raquo;</a>
+	</p>
+      </div>
     </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>Bootstrap3</h3>
+        <p>
+                CSSはTwitter Bootstrapを利用しています。
+        </p>
+        <p>
+	  <a class="btn btn-primary" role="button" href="http://twitter.github.io/bootstrap/">Twitter Bootstrap 公式サイト &raquo;</a>
+	</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>MySQL</h3>
+        <p>
+                データベースはMySQLを利用します。
+                また、データベースのマイグレーションを行うためのツールとしてシンプルなDbupを使います。<a href="htps://twitter.com/brtriver">@brtriver</a>がOSSで開発し公開しているプロダクトです。
+        </p>
+            <p><a class="btn btn-primary" role="button" href="http://dev.mysql.com/doc/refman/5.1/ja/index.html">MySQL 5.1 リファレンスマニュアル &raquo;</a></p>
+            <p><a class="btn btn-primary" role="button" href="http://brtriver.github.io/dbup/ja/">Dbup ドキュメント &raquo;</a></p>
+      </div>
+    </div>
+  </div>
+</div>
     <hr>
 {% endblock %}

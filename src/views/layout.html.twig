@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8">
     <title>GroupWorkBase by VOYAGE GROUP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,81 +8,100 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="{{ asset('/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
-    <style type="text/css">
-        body {
-            padding-top: 60px;
-            padding-bottom: 40px;
-        }
+    <link href="{{ asset('/bower_components/bootstrap/dist/css/bootstrap.css') }}" rel="stylesheet">
+    <style>
+      body {
+      padding-top: 70px;
+      padding-bottom: 30px;
+      }
+
+      .theme-dropdown .dropdown-menu {
+      position: static;
+      display: block;
+      margin-bottom: 20px;
+      }
+
+      .theme-showcase > p > .btn {
+      margin: 5px 0;
+      }
     </style>
-    <link href="{{ asset('/bootstrap/css/bootstrap-responsive.css') }}" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
-</head>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+  </head>
 
-<body>
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="brand" href="/">GroupWorkBase</a>
-            <div class="nav-collapse collapse">
-                <ul class="nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Document <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ urlFor('doc_top') }}">リンク一覧</a></li>
-                            <li class="divider"></li>
-                            <li class="nav-header">About</li>
-                            <li><a href="{{ urlFor('doc_basic') }}">基本</a></li>
-                            <li><a href="{{ urlFor('doc_extend') }}">用意された拡張</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{{ urlFor('hello', {name: 'VOYAGE_GROUP'}) }}">demo</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">課題 <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/study/01">課題1</a></li>
-                            <li><a href="/study/02">課題2</a></li>
-                            <li><a href="/study/03">課題3</a></li>
-                        </ul>
-                    </li>
-                </ul>
+  <body role="document">
 
-                <ul class="nav pull-right">
-                    {% block login %}
-                        {% if session.get('isLogin') %}
-                            <li><a href="{{ urlFor('user_edit') }}" >{{ session.get('user.name') }}</a></li>
-                            <li><a href="{{ urlFor('user_logout') }}">ログアウト</a></li>
-                        {% else %}
-                            <li><a href="{{ urlFor('user_login') }}">ログイン</a></li>
-                            <li><a href="{{ urlFor('user_register') }}">新規登録</a></li>
-                        {% endif %}
-                    {% endblock %}
-                </ul>
-            </div><!--/.nav-collapse -->
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{ urlFor('top') }}">GroupWorkBase</a>
         </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Guide <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ urlFor('doc_top') }}">リンク一覧</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">about</li>
+                <li><a href="{{ urlFor('doc_basic') }}">基本構成</a></li>
+                <li><a href="{{ urlFor('doc_extend') }}">用意された拡張</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Demo <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ urlFor('doc_bootstrap') }}">bootstrap</a></li>
+                <li><a href="{{ urlFor('hello', {'name': 'voyagegroup'}) }}">Hello VoyageGroup</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {% block login %}
+              {% if session.get('isLogin') %}
+                <li><a href="{{ urlFor('user_edit') }}" >{{ session.get('user.name') }}</a></li>
+                <li><a href="{{ urlFor('user_logout') }}">ログアウト</a></li>
+              {% else %}
+                <li><a href="{{ urlFor('user_login') }}">ログイン</a></li>
+                <li><a href="{{ urlFor('user_register') }}">新規登録</a></li>
+              {% endif %}
+            {% endblock %}
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
     </div>
-</div>
 
-<div class="container">
-    {% block contents '' %}
-    <footer>
-        <p>&copy; Company 2013</p>
-    </footer>
+    <div class="container theme-showcase" role="main">
+	{% block contents '' %}
+	<hr>
 
-</div> <!-- /container -->
+	<footer>
+	  <p>&copy; Company 2014</p>
+	</footer>
+      </div> <!-- /container -->
 
-<!-- Le javascript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="{{ asset('/js/jquery-2.0.0.js') }}"></script>
-<script src="{{ asset('/js/underscore.js') }}"></script>
-<script src="{{ asset('/js/backbone.js') }}"></script>
-<script src="{{ asset('/bootstrap/js/bootstrap.js') }}"></script>
-{% block javascript '' %}
-</body>
+      <!-- Le javascript
+	   ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="{{ asset('/bower_components/jquery/dist/jquery.js') }}"></script>
+      <script src="{{ asset('/bower_components/underscore/underscore.js') }}"></script>
+      <script src="{{ asset('/bower_components/bootstrap/dist/js/bootstrap.js') }}"></script>
+      <script src="{{ asset('/bower_components/vue/dist/vue.js') }}"></script>
+      {% block javascript '' %}
+  </body>
 </html>
