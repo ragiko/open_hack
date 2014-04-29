@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>GroupWorkBase Front by VOYAGE GROUP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+      padding-top: 70px;
+      padding-bottom: 30px;
+      }
+
+      .theme-dropdown .dropdown-menu {
+      position: static;
+      display: block;
+      margin-bottom: 20px;
+      }
+
+      .theme-showcase > p > .btn {
+      margin: 5px 0;
+      }
+    </style>
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+  </head>
+
+  <body role="document">
+
+    <section id="main">
+      <div class="row">
+	<div class="col-md-3 col-md-offset-3">
+	  <h3>投票アプリの画面遷移</h3>
+	  <div v-view="currentView"></div>
+	</div>
+      </div>
+    </section>
+
+
+    <script type="text/x-template" id="list">
+      <h3>一覧</h3>
+      <p><a href="#/new">追加</a></p>
+      <ul>
+	<li v-repeat="items">
+	  <p>
+	    {{title}} ({{like}})
+	    [<a href="#" v-on="click:vote(id)">like</a>]
+	    [<a href="#/edit/{{id}}">編集</a>]
+	  </p>
+	</li>
+      </ul>
+    </script>
+
+    <script type="text/x-template" id="new">
+      <h3>追加</h3>
+      <p><a href="#/list">一覧に戻る</a></p>
+      <input type="text" v-model="item.title">
+      <button v-on="click:add(item)">保存</button>
+    </script>
+
+    <script type="text/x-template" id="edit">
+      <h3>編集</h3>
+      <p><a href="#/list">一覧に戻る</a></p>
+      <input type="text" v-model="item.title">
+      <button v-on="click:update(item)">保存</button>
+      
+    </script>
+
+
+
+    <!-- Le javascript
+	 ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/underscore/underscore.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/bower_components/vue/dist/vue.js"></script>
+    <script src="/bower_components/director/build/director.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

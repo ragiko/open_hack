@@ -47,4 +47,22 @@ $container['repository.user'] = function($c){
         return new \Vg\Repository\UserRepository($c['db']);
     };
 
+/**
+ * JSON のレスポンス
+ */
+$container['response.json'] = $container->protect(function(\Slim\Http\Response $response) {
+        return function($data, $status = 200) use ($response){
+            $response->setStatus($status);
+            $response->headers->set('Content-Type', 'application/json');
+            // Encode <, >, ', &, and " for RFC4627-compliant JSON, which may also be embedded into HTML.
+            $jsonBody = json_encode(['data' => $data], JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
+            $response->setBody($jsonBody);
+        };
+    });
+
+
 return $container;
+
+
+
+

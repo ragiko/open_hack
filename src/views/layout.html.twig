@@ -56,9 +56,11 @@
               <ul class="dropdown-menu">
                 <li><a href="{{ urlFor('doc_top') }}">リンク一覧</a></li>
                 <li class="divider"></li>
-                <li class="dropdown-header">about</li>
+                <li class="dropdown-header">Backend</li>
                 <li><a href="{{ urlFor('doc_basic') }}">基本構成</a></li>
                 <li><a href="{{ urlFor('doc_extend') }}">用意された拡張</a></li>
+                <li class="dropdown-header">Frontend</li>
+                <li><a href="/front/">GroupWorkBase Front</a></li>
               </ul>
             </li>
           </ul>
@@ -101,7 +103,6 @@
       <script src="{{ asset('/bower_components/jquery/dist/jquery.js') }}"></script>
       <script src="{{ asset('/bower_components/underscore/underscore.js') }}"></script>
       <script src="{{ asset('/bower_components/bootstrap/dist/js/bootstrap.js') }}"></script>
-      <script src="{{ asset('/bower_components/vue/dist/vue.js') }}"></script>
       {% block javascript '' %}
   </body>
 </html>

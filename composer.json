@@ -6,7 +6,6 @@
         "slim/slim": "2.4.3",
         "slim/views": "0.1.2",
         "twig/twig": "v1.15.1",
-        "phpunit/phpunit": "4.0.17",
         "phake/phake": "v1.0.5",
         "respect/validation": "0.5.0"
     },
