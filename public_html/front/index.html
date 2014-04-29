@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>GroupWorkBase Front by VOYAGE GROUP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+      padding-top: 70px;
+      padding-bottom: 30px;
+      }
+
+      .theme-dropdown .dropdown-menu {
+      position: static;
+      display: block;
+      margin-bottom: 20px;
+      }
+
+      .theme-showcase > p > .btn {
+      margin: 5px 0;
+      }
+    </style>
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+  </head>
+
+  <body role="document">
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+	<div class="navbar-header">
+	  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+	  </button>
+	  <a class="navbar-brand" href="/front/">GroupWorkBase Front</a>
+	</div>
+	<div class="navbar-collapse collapse">
+	  <ul class="nav navbar-nav">
+            <li class="dropdown">
+	      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Guide <b class="caret"></b></a>
+	      <ul class="dropdown-menu">
+		<li><a href="#/guide/about">MVVM</a></li>
+		<li><a href="#/guide/event">イベント</a></li>
+		<li><a href="#/guide/route">ページ遷移</a></li>
+		<li><a href="#/guide/api">API連携</a></li>
+	      </ul>
+            </li>
+	  </ul>
+	  <ul class="nav navbar-nav">
+            <li class="dropdown">
+	      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Demo <b class="caret"></b></a>
+	      <ul class="dropdown-menu">
+		<li><a href="/front/demo/commits/">git commits viewer</a></li>
+		<li><a href="/front/demo/todomvc/">todomvc</a></li>
+	      </ul>
+            </li>
+	  </ul>
+	  <ul class="nav navbar-nav navbar-right">
+	  </ul>
+	</div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container theme-showcase" role="main" id="main">
+      <div v-view="currentView"></div>
+
+      <!-- first page component -->
+      <script type="text/x-template" id="first">
+	<h3>フロントエンドアプリケーション</h3>
+	<p>
+	  GroupWorkBase ではフロントエンドとサーバーサイドをAPIで連携することで役割を分離する仕組みを用意しています。
+	</p>
+	<p>
+	  フロントエンドは <a href="http://vuejs.org/">Vue.js</a> というフレームワークを利用しています。少しだけ <code>Vue.js</code> がどういったことができるのか見てみましょう
+	</p>
+	<p><a href="#/guide/about" class="btn btn-primary btn-large">Learn more »</a></p>
+      </script>
+
+      <!-- about page component -->
+      <script type="text/x-template" id="about">
+	<h3>MVVM</h3>
+	<p>
+	  `Vue.js` の説明は<a href="http://vuejs.org/guide/">本家のガイド</a>を見てください。
+	  ここでは実際に動くコードを見ながら画面遷移を作ることがゴールです
+	</p>
+	<p>
+	  `Vue.js` は MVVM といわれる Model, View, ViewModel という３つのレイヤーで管理するアーキテクチャです。簡単にいうと、UIで変更された値がModel,Viewに自動的に反映される仕組みであり、このデータバインディングの機能が `Vue.js` というフレームワークの特徴です。
+	</p>
+
+	<h3>UIとモデルのバインディング デモ</h3>
+	<p>
+	  <code>js/app.js</code> を見てみます。`data` というオブジェクトがあります。これが HTMLから参照することができます。userオブジェクトの表示させたいときは<code v-pre>{{user.name}}</code> と書けば {{user.name}} と表示されます。
+	</p>
+	<p>
+	  そして、inputタグに<code>v-model="user.name"</code>と指定すると、デフォルト値が{{user.name}}になり、また入力内容を変更するとその変更内容がモデルにも反映されます。デベロッパーツールで確認しながら以下のフォームに値を入力してください。するとこのページで参照している<code v-pre>{{user.name}}</code>の表示内容がすべて書き変わるのがわかります。
+	  <form>
+	    名前:<input type="text" v-model="user.name">
+	    <h4>現在の<code v-pre>{{user.name}}</code>の値は{{user.name}}です</h4>
+	  </form>
+	</p>
+	<p>
+	  このようにしてフロントエンドのアプリケーションでデータを共有します
+	</p>
+	<p><a href="#/guide/event" class="btn btn-primary btn-large">イベント処理 »</a></p>
+      </script>
+
+      <!-- event page component -->
+      <script type="text/x-template" id="event">
+	<h3>イベント</h3>
+	<p>
+	  さきほどの例ではフォームの値を変更すると勝手にデータの同期が行われるのを見ましたが、つぎはボタンを押されることでイベントが発生するサンプルを見てみます。下の合計は`+1`または`-1`を押すことで数値が変化します。HTMLでは<code>v-on</code>でイベント種別(click)とその処理(plus, minus)を定義し、実際の処理は<code>js/app.js</code>の`methods`でアプリに定義しています。
+	</p>
+	<p>
+	  合計:{{total}}
+	  <button v-on="click: plus()">+1</button>
+	  <button v-on="click: minus()">-1</button>
+	</p>
+	<p>
+	  jQueryで同じような処理をやろうとすると、どのDOMなのかをjQueryで書いたコードで探す必要がありますが、Vueを使うとDOMのことは気にしなくて済むというメリットがあります。
+	</p>
+	<p><a href="#/guide/route" class="btn btn-primary btn-large">ページ遷移 »</a></p>
+      </script>
+
+      <!-- route page component -->
+      <script type="text/x-template" id="route">
+	<h3>ページ遷移</h3>
+	<p>
+	  このガイドでもさきほどからページ遷移を行っていますが実はサーバーにはリクエストを投げていません。
+	  URLを見てみるとURLにハッシュ(#)が含まれているのがわかります。
+	  つまり、ページ内遷移をブラウザの履歴にも残しつつ1ページで制御しています。
+	  このようなアプリケーションをシングルページアプリケーションといいます。
+	</p>
+	<p>
+	  Vue.js ではこのようなルーティング機能がないので <a href="https://github.com/flatiron/director">director</a>というライブラリを使って実現しています。実装は <code>js/routes.js</code> にあります。
+	</p>
+	<p>
+	  シングルページアプリケーションで実装する必要はありません。多くのルーティングが必要となってくるとシングルページアプリケーションで実装するのは大変です。
+	</p>
+	<p><a href="#/guide/api" class="btn btn-primary btn-large">API連携 »</a></p>
+      </script>
+
+      <!-- api page component -->
+      <script type="text/x-template" id="api">
+	<h3>API連携</h3>
+	<p>
+	  Vue.jsで作成したアプリケーションはサーバーサイドとはXMLHttpRequest(XHR)を用いて通信します。ajaxはXHRです。Vue.jsにはXHRのためのライブラリは用意されていません。自分の好きなものを選択できます。
+	</p>
+	<p>
+	  <a href="/front/demo/commits/">公式サイトのデモ</a>にもgithubのcommitをAPI経由で取得し表示するものがあります。このアプリでも動くようにしたので見てみると参考になると思います。このサンプルではJavaScriptのXHRそのものを使っています。ここでは jQueryのajax機能を使ってサーバーサイドからデータを受け取ってみます。
+	</p>
+	<button
+	   v-show="commits.length == 0"
+	   v-on="click: fetchData()"
+	   >Vue.jsのgithubのコミット取得</button>
+	<h4>取得結果</h4>
+	<ul>
+          <li v-repeat="commits">
+            <a href="{{html_url}}" target="_blank" class="commit">{{sha.slice(0, 7)}}</a>
+            - <span class="message">{{commit.message }}</span><br>
+            by <span class="author">{{commit.author.name}}</span>
+            at <span class="date">{{commit.author.date }}</span>
+          </li>
+	</ul>
+
+	<p>
+	  ここで <code>commits</code> という配列を用意しておき、APIでの習得結果をセットしています。
+	  取得結果は<code>v-repeat</code>を使って1項目ずつ処理を繰り返すようにしています。
+	</p>
+
+	<h3>GroupWorkBase で APIを返す</h3>
+	<h4>ユーザー一覧</h4>
+	<p>
+	  <code>src/app/api.php</code> にユーザー一覧をJSONで返すAPIのサンプルを用意してあります。
+	  それを<code>app.js</code>の<code>app.fetchUser()</code>で取得し<code>app.users</code>を通してバインディングすることで表示するようにしてあります。
+	</p>
+	<ul>
+	  <li v-repeat="users">
+	    name:{{name}}, email:{{email}}
+	  </li>
+	</ul>
+      </script>
+
+      <hr>
+      <footer>
+	<p>&copy; Company 2014</p>
+      </footer>
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+	 ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/underscore/underscore.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/bower_components/marked/lib/marked.js"></script>
+    <script src="/bower_components/vue/dist/vue.js"></script>
+    <script src="/bower_components/director/build/director.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/routes.js"></script>
+  </body>
+</html>
