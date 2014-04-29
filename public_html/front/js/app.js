@@ -28,18 +28,18 @@
     methods: {
       // 加算
       plus: function() {
-        this.total++;
+        this.$data.total++;
       },
       // 減算
       minus: function() {
-        this.total--;
+        this.$data.total--;
       },
       // jQueryを使ったXHR
       fetchData: function () {
-        self = this;
+        var data = this.$data;
         $.getJSON('https://api.github.com/repos/yyx990803/vue/commits?per_page=3&sha=master')
         .done(function(res){
-          self.commits = res;
+          data.commits = res;
         })
         .fail(function(){
           alert('error');
@@ -47,9 +47,10 @@
       },
       // GroupWorkBase のAPIサーバーとの会話
       fetchUser: function (){
+        var data = this.$data;
         $.getJSON('/api/sample/users')
           .done(function(res){
-            app.users = res.data;
+            data.users = res.data;
           });
       }
     }
