@@ -48,5 +48,5 @@ $app->post('/api/sample/user', $haltUnlessAjaxRequest, function() use ($app, $co
             $app->stop();
         }
         // validation error
-        $jsonResponse($validator->errors(), 403);
+        $jsonResponse($validator->errors(), 400);
     });
