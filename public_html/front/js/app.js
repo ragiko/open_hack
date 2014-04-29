@@ -1,5 +1,5 @@
 // チュートリアルのアプリケーション
-(function(exports, $){
+(function(window, $, Vue){
   'use strict';
 
   // ルーティングによって表示されるコンポーネントを切り替える。routes.js 参照
@@ -9,7 +9,7 @@
   Vue.component('route', {template: '#route'});
   Vue.component('api', {template: '#api'});
 
-  exports.app = new Vue({
+  window.app = new Vue({
     el: '#main',
     data: {
       currentView: 'first',
@@ -57,4 +57,4 @@
 
   app.fetchUser();
 
-})(window, jQuery);
+})(window, jQuery, Vue);
