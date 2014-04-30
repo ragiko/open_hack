@@ -5,6 +5,7 @@ PORT=9999
 NPM=$(shell which npm)
 BOWER=$(shell pwd)/node_modules/bower/bin/bower
 COMMAND=help
+COMPONENT=$(shell pwd)/node_modules/component/bin/component
 
 all: test
 
@@ -33,3 +34,8 @@ list:
 	$(BOWER) list --path
 bower:
 	$(BOWER) $(COMMAND) $(ARG)
+
+component:
+	cd ./public_html/front/demo/vote-component; \
+	$(COMPONENT) install; \
+	$(COMPONENT) build --standalone voteApp

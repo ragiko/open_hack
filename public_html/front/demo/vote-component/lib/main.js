@@ -1,5 +1,4 @@
 var Vue = require('vue');
-var page = require('page');
 var _ = require('underscore');
 
 var app = new Vue({
@@ -7,9 +6,11 @@ var app = new Vue({
     components: {
       list: require('list'),
       new: require('new'),
-      edit: require('edit')
+      edit: require('edit'),
+      notfound: require('notfound')
     },
     data: {
+      rootPath: '/front/demo/vote-component/',
       currentView: 'list',
       item: {
         title: ''
@@ -26,7 +27,7 @@ var app = new Vue({
         item.like += 1;
       },
       update: function(item) {
-        window.location.href = '#/';
+        this.$data.currentView = 'list';
       },
       add: function(item) {
         var items = this.$data.items;
@@ -36,27 +37,32 @@ var app = new Vue({
           title: item.title,
           like: 0
         };
-        console.log(newItem);
         items.push(newItem);
-        window.location.href = '#/';
+        this.$data.currentView = 'list';
       }
     }
 });
 
 
+var page = require('page');
 page.base('/front/demo/vote-component');
 
-page('/', function(ctx){
-  var hash = ctx.hash;
-  console.log(hash);
-  if (hash === '/new') {
-    app.$data.currentView = 'new';
-  } else if (hash === '/list') {
-    app.$data.currentView = 'list';
-  } else if(hash.contains('/edit')) {
-    app.currentView = 'edit';
-    app.item = _.findWhere(app.items, {id: Number(ctx.params.id)});
-  }
+page('/', function(){
+  app.$data.currentView = 'list';
+});
+
+page('/new', function(){
+  app.$data.item.title = '';
+  app.$data.currentView = 'new';
+});
+
+page('/edit/:id', function(ctx){
+  app.currentView = 'edit';
+  app.item = _.findWhere(app.items, {id: Number(ctx.params.id)});
+});
+
+page('*', function(){
+  app.currentView = 'notfound';
 });
 
 page();

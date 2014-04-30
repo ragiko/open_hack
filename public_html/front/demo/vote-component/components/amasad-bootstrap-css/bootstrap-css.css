@@ -2681,8 +2681,8 @@ input[type="button"].btn-block {
 
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url("amasad-bootstrap-css/fonts/glyphicons-halflings-regular.eot");
-  src: url("amasad-bootstrap-css/fonts/glyphicons-halflings-regular.eot?#iefix") format('embedded-opentype'), url("amasad-bootstrap-css/fonts/glyphicons-halflings-regular.woff") format('woff'), url("amasad-bootstrap-css/fonts/glyphicons-halflings-regular.ttf") format('truetype'), url("amasad-bootstrap-css/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular") format('svg');
+  src: url('./fonts/glyphicons-halflings-regular.eot');
+  src: url('./fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('./fonts/glyphicons-halflings-regular.woff') format('woff'), url('./fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('./fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 }
 
 .glyphicon {
@@ -7115,23 +7115,4 @@ td.visible-print {
   td.hidden-print {
     display: none !important;
   }
-}
-
-
-
-
-
-body {
-    padding-top: 70px;
-    padding-bottom: 30px;
-}
-
-.theme-dropdown .dropdown-menu {
-    position: static;
-    display: block;
-    margin-bottom: 20px;
-}
-
-.theme-showcase > p > .btn {
-    margin: 5px 0;
 }

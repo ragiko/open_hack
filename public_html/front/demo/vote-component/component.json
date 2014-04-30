@@ -15,7 +15,8 @@
   "local": [
     "list",
     "new",
-    "edit"
+    "edit",
+    "notfound"
   ],
   "dependencies": {
     "yyx990803/vue": "*",
