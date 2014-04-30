@@ -1,0 +1,29 @@
+{
+  "name": "vote-component",
+  "private": true,
+  "main": "lib/main.js",
+  "scripts": [
+    "lib/main.js"
+  ],
+  "styles": [
+    "lib/styles/main.css"
+  ],
+  "paths": [
+    "../../../../components",
+    "lib/components"
+  ],
+  "local": [
+    "list",
+    "new",
+    "edit",
+    "notfound"
+  ],
+  "dependencies": {
+    "yyx990803/vue": "*",
+    "components/jquery": "*",
+    "jashkenas/underscore": "*",
+    "amasad/bootstrap-css": "*",
+    "visionmedia/page.js": "*"
+  },
+  "remotes": []
+}

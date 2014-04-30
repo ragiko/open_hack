@@ -1,0 +1,11 @@
+<h3>一覧</h3>
+<p><a href="{{rootPath}}new">追加</a></p>
+<ul>
+  <li v-repeat="items">
+    <p>
+      {{title}} ({{like}})
+      [<a href="#" v-on="click:vote(id)">like</a>]
+      [<a href="{{rootPath}}edit/{{id}}">編集</a>]
+    </p>
+  </li>
+</ul>

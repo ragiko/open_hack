@@ -1,13 +1,14 @@
-// 投票アプリの画面遷移だけ
-(function(window, $, Vue){
-  'use strict';
+var Vue = require('vue');
+var page = require('page');
+var _ = require('underscore');
 
-  Vue.component('list', {template: '#list'});
-  Vue.component('new', {template: '#new'});
-  Vue.component('edit', {template: '#edit'});
-
-  window.app = new Vue({
+var app = new Vue({
     el: '#main',
+    components: {
+      list: require('list'),
+      new: require('new'),
+      edit: require('edit')
+    },
     data: {
       currentView: 'list',
       item: {
@@ -40,25 +41,24 @@
         window.location.href = '#/';
       }
     }
-  });
+});
 
-  var routes = {
-    '/': function() {
-      app.currentView = 'list';
-    },
-    '/list': function() {
-      app.currentView = 'list';
-    },
-    '/new': function() {
-      app.item.title = '';
-      app.currentView = 'new';
-    },
-    '/edit/:id': function(id) {
-      app.currentView = 'edit';
-      app.item = _.findWhere(app.items, {id: Number(id)});
-    }
-  };
-  var router = new Router(routes);
-  router.init();
 
-})(window, jQuery, Vue);
+page('/', function(){
+  app.currentView = 'list';
+});
+
+page('/list', function(){
+  app.currentView = 'list';
+});
+
+page('/new', function(){
+  app.currentView = 'new';
+});
+
+page('/edit/:id', function(ctx){
+  app.currentView = 'edit';
+  app.item = _.findWhere(app.items, {id: Number(ctx.params.id)});
+});
+
+page();

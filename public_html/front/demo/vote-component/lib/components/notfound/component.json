@@ -1,0 +1,5 @@
+{
+    "name": "notfound",
+    "scripts": ["index.js"],
+    "templates": ["template.html"]
+}

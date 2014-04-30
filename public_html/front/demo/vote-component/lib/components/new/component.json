@@ -1,0 +1,5 @@
+{
+    "name": "new",
+    "scripts": ["index.js"],
+    "templates": ["template.html"]
+}
