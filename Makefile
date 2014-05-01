@@ -6,6 +6,7 @@ NPM=$(shell which npm)
 BOWER=$(shell pwd)/node_modules/bower/bin/bower
 COMMAND=help
 COMPONENT=$(shell pwd)/node_modules/component/bin/component
+GRUNT=$(shell pwd)/node_modules/grunt-cli/bin/grunt
 
 all: test
 
@@ -39,3 +40,5 @@ component:
 	cd ./public_html/front/demo/vote-component; \
 	$(COMPONENT) install; \
 	$(COMPONENT) build --standalone voteApp
+grunt:
+	$(GRUNT)
