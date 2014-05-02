@@ -6,7 +6,6 @@ module.exports = function(app) {
       app.currentView = 'list';
     },
     '/list': function() {
-      app.hasAnimation = false;
       app.currentView = 'list';
     },
     '/new': function() {
