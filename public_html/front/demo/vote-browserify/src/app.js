@@ -6,9 +6,6 @@ module.exports = function() {
     data: {
       hasAnimation: true,
       currentView: 'list',
-      item: {
-        title: ''
-      },
       items: [
         {id: 1, title: 'TODOアプリ', like: 0},
         {id: 2, title: 'BBSアプリ', like: 5},
@@ -16,6 +13,9 @@ module.exports = function() {
     ]
     },
     methods: {
+      init: function(){
+        return {title: ''};
+      },
       vote: function(id){
         var item = _.findWhere(this.$data.items, {id: id});
         item.like += 1;
@@ -31,7 +31,6 @@ module.exports = function() {
           title: item.title,
           like: 0
         };
-        console.log(newItem);
         items.push(newItem);
         window.location.href = '#/';
       }

@@ -3,13 +3,15 @@ module.exports = function(app) {
 
   return new Router({
     '/': function() {
+      app.item = app.init();
       app.currentView = 'list';
     },
     '/list': function() {
+      app.item = app.init();
       app.currentView = 'list';
     },
     '/new': function() {
-      app.item.title = '';
+      app.item = app.init();
       app.currentView = 'new';
     },
     '/edit/:id': function(id) {
