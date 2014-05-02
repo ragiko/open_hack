@@ -9,3 +9,5 @@ var/cache/*
 vendor/*
 public_html/bower_components/*
 node_modules/*
+components/*
+public_html/front/demo/vote-browserify/build/*

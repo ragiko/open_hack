@@ -8,7 +8,8 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="build/css/bootstrap.css" rel="stylesheet">
+    <link href="build/css/animate.min.css" rel="stylesheet">
     <style>
       body {
       padding-top: 70px;
@@ -24,6 +25,7 @@
       .theme-showcase > p > .btn {
       margin: 5px 0;
       }
+
     </style>
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -40,9 +42,10 @@
     <section id="main">
       <div class="row">
 	<div class="col-md-3 col-md-offset-3">
+	  <p><a href="/front/">戻る</a></p>
 	  <h3>投票アプリの画面遷移</h3>
 	  <h4>Vue.js + director(router) browserify</h4>
-	  <div v-view="currentView"></div>
+	  <div class="view" v-view="currentView" v-effect="my-effect"></div>
 	</div>
       </div>
     </section>
@@ -51,6 +54,6 @@
 	 ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="build/vendor.js"></script>
-    <script src="build/app.js"></script>
+    <script src="build/main.js"></script>
   </body>
 </html>
