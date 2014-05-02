@@ -12,9 +12,6 @@ var app = new Vue({
     data: {
       rootPath: '/front/demo/vote-component/',
       currentView: 'list',
-      item: {
-        title: ''
-      },
       items: [
         {id: 1, title: 'TODOアプリ', like: 0},
         {id: 2, title: 'BBSアプリ', like: 5},
@@ -22,6 +19,9 @@ var app = new Vue({
     ]
     },
     methods: {
+      init: function(){
+        return {title: ''};
+      },
       vote: function(id){
         var item = _.findWhere(this.$data.items, {id: id});
         item.like += 1;
@@ -48,11 +48,12 @@ var page = require('page');
 page.base('/front/demo/vote-component');
 
 page('/', function(){
+  app.$data.item = app.init();
   app.$data.currentView = 'list';
 });
 
 page('/new', function(){
-  app.$data.item.title = '';
+  app.$data.item = app.init();
   app.$data.currentView = 'new';
 });
 
@@ -62,6 +63,7 @@ page('/edit/:id', function(ctx){
 });
 
 page('*', function(){
+  app.$data.item = app.init();
   app.currentView = 'notfound';
 });
 

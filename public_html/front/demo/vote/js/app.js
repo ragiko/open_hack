@@ -10,9 +10,6 @@
     el: '#main',
     data: {
       currentView: 'list',
-      item: {
-        title: ''
-      },
       items: [
         {id: 1, title: 'TODOアプリ', like: 0},
         {id: 2, title: 'BBSアプリ', like: 5},
@@ -20,6 +17,9 @@
     ]
     },
     methods: {
+      init: function(){
+        return {title: ''};
+      },
       vote: function(id){
         var item = _.findWhere(this.$data.items, {id: id});
         item.like += 1;
@@ -35,7 +35,6 @@
           title: item.title,
           like: 0
         };
-        console.log(newItem);
         items.push(newItem);
         window.location.href = '#/';
       }
@@ -44,13 +43,15 @@
 
   var routes = {
     '/': function() {
+      app.item = app.init();
       app.currentView = 'list';
     },
     '/list': function() {
+      app.item = app.init();
       app.currentView = 'list';
     },
     '/new': function() {
-      app.item.title = '';
+      app.item = app.init();
       app.currentView = 'new';
     },
     '/edit/:id': function(id) {
