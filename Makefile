@@ -40,7 +40,7 @@ component:
 	cd ./public_html/front/demo/vote-component; \
 	$(COMPONENT) install; \
 	$(COMPONENT) build --standalone voteApp
-grunt:
-	$(GRUNT)
+build:
+	$(GRUNT) build
 watch:
 	$(GRUNT) watch
