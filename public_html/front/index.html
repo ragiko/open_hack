@@ -57,6 +57,7 @@
 		<li><a href="#/guide/event">イベント</a></li>
 		<li><a href="#/guide/route">ページ遷移</a></li>
 		<li><a href="#/guide/api">API連携</a></li>
+		<li><a href="#/guide/build">アプリ構築</a></li>
 	      </ul>
             </li>
 	  </ul>
@@ -65,12 +66,13 @@
 	      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Demo <b class="caret"></b></a>
 	      <ul class="dropdown-menu">
                 <li class="dropdown-header">Vue.js 構築例</li>
-		<li><a href="/front/demo/vote/">Vue.js でページ遷移</a></li>
-		<li><a href="/front/demo/vote-component/">Vue.js + component でページ遷移</a></li>
+		<li><a href="/front/demo/vote/">Vue.js + director.js</a></li>
+		<li><a href="/front/demo/vote-browserify/">Vue.js + director.js with browserify</a></li>
 		<li><a href="/front/demo/register/">Vue.js + API(GroupWorkBase)</a></li>
                 <li class="dropdown-header">Vue.js demo appliation</li>
 		<li><a href="/front/demo/commits/">git commits viewer</a></li>
 		<li><a href="/front/demo/todomvc/">todomvc</a></li>
+		<li><a href="/front/demo/vote-component/">Vue.js + page.js with component</a></li>
 	      </ul>
             </li>
 	  </ul>
@@ -198,7 +200,36 @@
 	    name:{{name}}, email:{{email}}
 	  </li>
 	</ul>
+	<p><a href="#/guide/build" class="btn btn-primary btn-large">複雑なアプリ構築 »</a></p>
       </script>
+
+      <!-- build page component -->
+      <script type="text/x-template" id="build">
+	<h3>複雑なアプリ構築</h3>
+	<p>
+	  このGuideのページは一番シンプルな構成で書かれていますが、そのためにページ数が多くなってくるとHTMLがどんどん膨れていってしまいます。
+	  たとえば、Vue.js と director で投票アプリを作るとすると何も利用しなければ<a href="/front/demo/vote/">このページ</a>のようなコードになります。(詳しくはHTML、jsを覗いてみてください)
+	  同じアプリを、より楽に構築するためには以下のようなツールを利用し、複雑さや面倒さをなくすことができます。
+	</p>
+	<h4>browserify</h4>
+	<p>
+	  <a href="http://browserify.org/">browerify</a>は node.js のモジュールを requireという手続きでクライアントサイドでも利用できるようにする便利なツールです。たとえばbrowerifyを使うことで、テンプレートやロジックを別ファイルにして、requireで呼び出すことができるようになります。<a href="/front/demo/vote-browserify/">browserifyを使った投票アプリ</a>はパッと見何もかわりませんが、一覧、新規、編集のテンプレートが別ファイルになっていて読み込まれるようになっています。
+	</p>
+	<p>
+	  実際は `src/app.js` で requireを使った形式で記述を行い、browserifyコマンドを通してブラウザ上で実行できる `build/app.js` に変換しています。そして、ブラウザからはこの`build/app.js`をscriptタグで読み込んでいます。
+	</p>
+
+	<h4>Grunt</h4>
+	<p>
+	  browserifyコマンドでbuild処理を行ったりするのを毎回手作業で打つのは大変です。そういったタスクを管理できる仕組みが<a href="http://gruntjs.com/">Grunt</a>です。Gruntは `gruntfile.js` にタスクを記述するというルールです。複数のタスクを組み合わせたり便利なタスクが用意されているので、自分の使いやすいように組み合わせることができます。今回は bower でインストールした外部jsライブラリを1ファイルに結合する`bower_concat` というタスクも利用し、build時に `build/vendoer.js` に出力するようにしています。
+	</p>
+
+	<h4>CoffScript</h4>
+	<p>
+	  Gruntfileは JavaScriptだけでなく、<a href="http://coffeescript.org/">CoffScript</a>でも記述できます。CoffScriptは JavaScriptのシンタックスシュガーで素のJavaScriptよりも書きやすく、可読性に優れています。括弧ばかりの記述になるような Gruntfileの記述には最適です。というわけで、GroupWorkBase では Gruntfile.coffee ファイルを用意しています。
+	</p>
+      </script>
+
 
       <hr>
       <footer>

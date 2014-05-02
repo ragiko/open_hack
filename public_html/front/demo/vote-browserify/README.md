@@ -9,9 +9,19 @@ Gruntはcoffeeでも記述できるのでcoffeeスクリプトで記述してい
 
 また、bowerで管理している外部ライブラリも`vendor.js`としてまとめる bower_concat というタスクを利用しています。
 
-## コンパイル
+`main.js` で、エフェクト、コンポーネント、アプリ、ルーティングを読み込みアプリケーションの構成を作っています。
+
+毎回手動でビルドするのは面倒なので、ファイル検知し自動で再ビルドするようにタスクを用意しています。(make watch)
+
+また、animate.css を使い、v-effect でページ遷移時にアニメーションさせるように書いています。詳しくは src/effect.js を参照。
+
+## ビルド
 
     $ make grunt
+
+## js変更検知し自動ビルド
+
+    $ make watch
 
 ## 構成
 ```
@@ -38,3 +48,4 @@ Gruntはcoffeeでも記述できるのでcoffeeスクリプトで記述してい
 * https://www.npmjs.org/package/grunt-bower-concat
 * http://coffeescript.org/
 * http://nodejs.jp/nodejs.org_ja/docs/v0.4/api/fs.html
+* http://daneden.github.io/animate.css/

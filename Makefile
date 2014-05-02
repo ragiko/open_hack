@@ -42,3 +42,5 @@ component:
 	$(COMPONENT) build --standalone voteApp
 grunt:
 	$(GRUNT)
+watch:
+	$(GRUNT) watch

@@ -8,6 +8,7 @@
   Vue.component('event', {template: '#event'});
   Vue.component('route', {template: '#route'});
   Vue.component('api', {template: '#api'});
+  Vue.component('build', {template: '#build'});
 
   window.app = new Vue({
     el: '#main',
