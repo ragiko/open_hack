@@ -11,3 +11,6 @@ public_html/bower_components/*
 node_modules/*
 components/*
 public_html/front/demo/vote-browserify/build/*
+public_html/front/demo/vote-component/build/*
+public_html/front/demo/vote-component/components/*
+
