@@ -4,9 +4,10 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-browserify'
   grunt.loadNpmTasks 'grunt-este-watch'
   grunt.initConfig
+    app_path: 'public_html/front/demo/vote-browserify'
     bower_concat:
       all:
-        dest: 'public_html/front/demo/vote-browserify/build/vendor.js'
+        dest: '<%= app_path %>/build/vendor.js'
         dependencies: 'underscore': 'jquery'
         mainFiles:
           'director': 'build/director.js'
@@ -19,8 +20,8 @@ module.exports = (grunt) ->
     browserify:
       app:
         files:
-          'public_html/front/demo/vote-browserify/build/main.js': [
-            'public_html/front/demo/vote-browserify/src/main.js'
+          '<%= app_path %>/build/main.js': [
+            '<%= app_path %>/src/main.js'
           ]
         options:
           transform: ['brfs']
@@ -33,11 +34,11 @@ module.exports = (grunt) ->
         'animate.css/animate.min.css'
         'bootstrap/dist/css/bootstrap.css'
         ]
-       dest: 'public_html/front/demo/vote-browserify/build/css/'
+       dest: '<%= app_path %>/build/css/'
         
     esteWatch:
       options:
-        dirs: ['public_html/front/demo/vote-browserify/src/**']
+        dirs: ['<%= app_path %>/src/**']
       js: () -> 'browserify'
 
   grunt.registerTask "build", ["bower_concat", "copy:css", "browserify"]

@@ -1,10 +1,10 @@
 <h3>一覧</h3>
 <p><a href="#/new">追加</a></p>
 <ul>
-  <li v-repeat="items">
+  <li v-repeat="items" v-on="click: animate(this)">
     <p>
       {{title}} ({{like}})
-      [<a href="#" v-on="click:vote(id)">like</a>]
+      [<a href="#" v-on="click:vote(id, this)">like</a>]
       [<a href="#/edit/{{id}}">編集</a>]
     </p>
   </li>

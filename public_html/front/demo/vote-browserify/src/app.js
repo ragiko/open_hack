@@ -16,7 +16,7 @@ module.exports = function() {
       init: function(){
         return {title: ''};
       },
-      vote: function(id){
+      vote: function(id, vm){
         var item = _.findWhere(this.$data.items, {id: id});
         item.like += 1;
       },
@@ -33,6 +33,11 @@ module.exports = function() {
         };
         items.push(newItem);
         window.location.href = '#/';
+      },
+      animate: function(vm) {
+        $(vm.$el).addClass('animated flash').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+          $(this).removeClass('animated flash');
+        });
       }
     }
   });

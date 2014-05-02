@@ -1,4 +1,4 @@
-Vue.effect('my-effect', {
+Vue.effect('fadein', {
   enter: function (el, insert, timeout) {
     $(el).addClass('animated fadeIn');
     insert(el);
