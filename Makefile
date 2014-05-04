@@ -36,11 +36,14 @@ list:
 bower:
 	$(BOWER) $(COMMAND) $(ARG)
 
-component:
-	cd ./public_html/front/demo/vote-component; \
-	$(COMPONENT) install; \
-	$(COMPONENT) build --standalone voteApp
 build:
 	$(GRUNT) build
 watch:
 	$(GRUNT) watch
+test-front:
+	$(GRUNT) test
+
+component:
+	cd ./public_html/front/demo/vote-component; \
+	$(COMPONENT) install; \
+	$(COMPONENT) build --standalone voteApp

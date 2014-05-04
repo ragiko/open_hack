@@ -10,13 +10,18 @@ GroupWork ベースアプリ (VOYAGE GROUP)
 * mysql
 * curl (パッケージインストールのため)
 
-## アプリケーション構成
+## 主要なアプリケーション構成
 
 * Slim2
 * Twig
 * Pimple2
+* PHPUnit
 
-
+* Vue.js
+* Browserify
+* director
+* mocha
+* PhantomJS
 
 ## インストール
 
@@ -80,6 +85,11 @@ bowerを使って依存管理されています。詳しは Makefile参照
 
     $ make test
 
+ファイルの更新を検知してテストを自動実行させるためにはwatchを実行しておくだけです。
+
+    $ make watch
+
+
 ## インデントを整形
 
     $ make fixer
@@ -90,7 +100,18 @@ Vue.js と director を使った フロントエンドアプリケーション�
 サーバー起動後に ブラウザで http://localhost:9999/front/ にアクセスすればチュートリアルを確認できます
 
 デモアプリを動かすためには
-```
-$ make build
-```
+
+    $ make build
+
 を実行する必要があります
+
+フロントエンドのテストは
+
+    $ make test-front
+
+で実行されます。また、バックエンドと同じく
+
+    $ make watch
+
+でファイル更新を検知し js のテストが実行されるようになっています。
+(ただし、現在の設定はデモアプリのテスト `/public_html/front/demo/vote-browserify/` のみが検知対象。詳しくは gruntfile.coffeeを参照)

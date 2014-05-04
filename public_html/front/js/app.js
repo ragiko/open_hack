@@ -9,6 +9,7 @@
   Vue.component('route', {template: '#route'});
   Vue.component('api', {template: '#api'});
   Vue.component('build', {template: '#build'});
+  Vue.component('test', {template: '#test'});
 
   window.app = new Vue({
     el: '#main',

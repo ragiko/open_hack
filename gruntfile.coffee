@@ -3,6 +3,9 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-browserify'
   grunt.loadNpmTasks 'grunt-este-watch'
+  grunt.loadNpmTasks 'grunt-mocha-phantomjs'
+  grunt.loadNpmTasks 'grunt-shell';
+  
   grunt.initConfig
     app_path: 'public_html/front/demo/vote-browserify'
     bower_concat:
@@ -25,6 +28,13 @@ module.exports = (grunt) ->
           ]
         options:
           transform: ['coffeeify', 'brfs']
+      test:
+        files:
+          '<%= app_path %>/test/test.js': [
+            '<%= app_path %>/test/test.coffee'
+          ]
+        options:
+          transform: ['coffeeify', 'brfs', 'espowerify']
     copy:
       css:
        expand: true
@@ -38,10 +48,20 @@ module.exports = (grunt) ->
         
     esteWatch:
       options:
-        dirs: ['<%= app_path %>/src/**']
-      js: -> 'browserify'
-      coffee: -> 'browserify'
+        dirs: ['<%= app_path %>/src/**/', '<%= app_path %>/test/**/', 'src/**/']
+      coffee: -> ['browserify', 'test']
+      php: -> 'shell:phpunit'
+
+    mocha_phantomjs:
+      options:
+        reporter: 'spec'
+      all: ['<%= app_path %>/test/test.html']
+
+    shell:
+      phpunit:
+        command: 'make test'
 
   grunt.registerTask "build", ["bower_concat", "copy:css", "browserify"]
+  grunt.registerTask "test", ["mocha_phantomjs"]
   grunt.registerTask "watch", ["esteWatch"]
   grunt.registerTask "default", ["build"]

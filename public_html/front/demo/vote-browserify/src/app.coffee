@@ -4,7 +4,6 @@ module.exports = ->
   new Vue
     el: '#main',
     data:
-      hasAnimation: true,
       currentView: 'list',
       items: [
         {id: 1, title: 'TODOアプリ', like: 0},

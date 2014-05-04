@@ -58,6 +58,7 @@
 		<li><a href="#/guide/route">ページ遷移</a></li>
 		<li><a href="#/guide/api">API連携</a></li>
 		<li><a href="#/guide/build">アプリ構築</a></li>
+		<li><a href="#/guide/test">テスト</a></li>
 	      </ul>
             </li>
 	  </ul>
@@ -250,8 +251,27 @@
 	<p>
 	  シングルページアプリケーションは画面遷移がユーザーに伝わりにくいため、適度なアニメーションを入れることで使いやすくなる場合があります。demoで用意したアプリでは<a href="http://daneden.github.io/animate.css/">animate.css</a>というHTML5 + CSS3 ベースのアニメーションを使って画面遷移時にアニメーションを入れています。jsを使わずにクラスを要素に追加するだけでアニメーションができます。
 	</p>
+	<p><a href="#/guide/test" class="btn btn-primary btn-large">テスト »</a></p>
       </script>
-
+      <!-- test page component -->
+      <script type="text/x-template" id="test">
+	<h3>テスト</h3>
+	<p>
+	  ブラウザのjsのテストはブラウザを通してテストすることになります。そのため、何かしらのブラザのアプリが必要になりますが、GroupWorkBaseでは <a href="http://phantomjs.org/">PhantomJS</a>というヘッドレスブラウザアプリを使ってCLIからテストを行える環境を用意しています。テスティングフレームワークは<a href="http://visionmedia.github.io/mocha/">mocha</a>というシンプルなフレームワークを使い、アサーションは<a href="https://github.com/twada/power-assert">power-assert</a>というパワーアサート系のアサーションを利用しています。
+	</p>
+	<p>
+	  フロントエンドのテストの実行は<code>$ make build</code>でコードをコンパイルした後に<code>$ make test-front</code>を実行するだけです。これで`vote-browserify`の<code>test/test.html</code>が実行されます。実際は、PhantomJSを起動し、このHTMLファイルを実行することでmochaのテストケースが実行され結果が返されるという仕組みです。
+	</p>
+	<p>
+	  <code>test/test.coffee</code>がテストコードですが、`list`を`list2`などに書き換えて再度実行してみると、何が間違っているのかがとてもわかりやすく表示されることが確認できると思います。このエラー時の表示の見やすさは `power-assert` のおかげです。
+	</p>
+	<p>
+	  <code>$ make watch</code>というタスクを実行すると、ファイルの変更を検知し自動的にテストが実行されます。これを利用することでさらに早いフィードバックを受けながら開発を進めることができます。また、PHPのファイルの変更のときはphpunitが走るようにgruntfile.coffeeで設定されているので、バックエンドの開発でもこのmake watch は利用できます。
+	</p>
+	<p>
+	  長くなりましたがフロントエンドで利用している技術、基本的な説明は終了です。全てを理解する必要はありませんが、一歩一歩手を動かしながら理解することで今までとは全く違う世界が見えてくるはずです。がんばってください。
+	</p>
+      </script>
 
       <hr>
       <footer>
