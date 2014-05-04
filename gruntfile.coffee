@@ -21,10 +21,10 @@ module.exports = (grunt) ->
       app:
         files:
           '<%= app_path %>/build/main.js': [
-            '<%= app_path %>/src/main.js'
+            '<%= app_path %>/src/main.coffee'
           ]
         options:
-          transform: ['brfs']
+          transform: ['coffeeify', 'brfs']
     copy:
       css:
        expand: true
@@ -39,7 +39,8 @@ module.exports = (grunt) ->
     esteWatch:
       options:
         dirs: ['<%= app_path %>/src/**']
-      js: () -> 'browserify'
+      js: -> 'browserify'
+      coffee: -> 'browserify'
 
   grunt.registerTask "build", ["bower_concat", "copy:css", "browserify"]
   grunt.registerTask "watch", ["esteWatch"]

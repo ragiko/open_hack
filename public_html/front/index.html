@@ -193,7 +193,7 @@
 	<h4>ユーザー一覧</h4>
 	<p>
 	  <code>src/app/api.php</code> にユーザー一覧をJSONで返すAPIのサンプルを用意してあります。
-	  それを<code>app.js</code>の<code>app.fetchUser()</code>で取得し<code>app.users</code>を通してバインディングすることで表示するようにしてあります。
+	  それを<code>app.js</code>の<code>fetchUser()</code>で取得し<code>app.users</code>を通してバインディングすることで表示するようにしてあります。
 	</p>
 	<ul>
 	  <li v-repeat="users">
@@ -216,7 +216,7 @@
 	  <a href="http://browserify.org/">browerify</a>は node.js のモジュールを requireという手続きでクライアントサイドでも利用できるようにする便利なツールです。たとえばbrowerifyを使うことで、テンプレートやロジックを別ファイルにして、requireで呼び出すことができるようになります。<a href="/front/demo/vote-browserify/">browserifyを使った投票アプリ</a>はパッと見何もかわりませんが、一覧、新規、編集のテンプレートが別ファイルになっていて読み込まれるようになっています。
 	</p>
 	<p>
-	  実際は `src/main.js` で requireを使った形式で記述を行い、browserifyコマンドを通してブラウザ上で実行できる `build/main.js` に変換しています。そして、ブラウザからはこの`build/main.js`をscriptタグで読み込んでいます。
+	  実際は `src/main.coffee` で requireを使った形式で記述を行い、browserifyコマンドを通してブラウザ上で実行できる `build/main.js` に変換しています。そして、ブラウザからはこの`build/main.js`をscriptタグで読み込んでいます。
 	</p>
 
 	<h4>Grunt</h4>
@@ -226,7 +226,7 @@
 
 	<h4>CoffScript</h4>
 	<p>
-	  Gruntfileは JavaScriptだけでなく、<a href="http://coffeescript.org/">CoffScript</a>でも記述できます。CoffScriptは JavaScriptのシンタックスシュガーで素のJavaScriptよりも書きやすく、可読性に優れています。括弧ばかりの記述になるような Gruntfileの記述には最適です。というわけで、GroupWorkBase では Gruntfile.coffee ファイルを用意しています。アプリケーションをCoffScriptで書くことも可能です。
+	  Gruntfileは JavaScriptだけでなく、<a href="http://coffeescript.org/">CoffScript</a>でも記述できます。CoffScriptは JavaScriptのシンタックスシュガーで素のJavaScriptよりも書きやすく、可読性に優れています。括弧ばかりの記述になるような Gruntfileの記述には最適です。というわけで、GroupWorkBase では Gruntfile.coffee ファイルを用意しています。アプリケーションをCoffScriptで書くことも可能です。`vote-browserify`ディレクトリのコードはサンプルとしてcoffeeで記述しましたがやっていることは`vote`ディレクトリの内容とと全く同じです。
 	</p>
 
 	<h4>アニメーション</h4>

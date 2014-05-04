@@ -26,6 +26,9 @@
       // ユーザー一覧
       users: []
     },
+    ready: function(){
+      this.fetchUser();
+    },
     methods: {
       // 加算
       plus: function() {
@@ -56,7 +59,5 @@
       }
     }
   });
-
-  app.fetchUser();
 
 })(window, jQuery, Vue);
