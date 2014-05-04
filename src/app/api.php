@@ -50,3 +50,19 @@ $app->post('/api/sample/user', $haltUnlessAjaxRequest, function() use ($app, $co
         // validation error
         $jsonResponse($validator->errors(), 400);
     });
+
+/**
+ * アクセスしているユーザ名を返すAPI
+ * GroupWorkBase Front の右上にユーザー名を表示する処理で使用
+ */
+$app->get('/api/sample/me', $haltUnlessAjaxRequest, function() use ($jsonResponse, $container) {
+        $repository = $container['repository.user'];
+        $user = $repository->findById($container['session']->get('user.id'));
+        if ($user->id) {
+            $jsonResponse($user->name);
+        } else {
+            // ユーザーが取得できないときは 401 Unauthorized を返す
+            $jsonResponse([], 401);
+        }
+    });
+

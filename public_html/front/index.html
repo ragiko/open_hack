@@ -76,6 +76,11 @@
 	      </ul>
             </li>
 	  </ul>
+	  <ul class="nav navbar-nav navbar-right" id="user">
+	    <li v-if="!name"><a href="/user/login">ログイン</a></li>
+	    <li v-if="name"><a href="/user/edit">{{name}}</a></li>
+	    <li v-if="name"><a href="/user/logout">ログアウト</a></li>
+	  </ul>
 	  <ul class="nav navbar-nav navbar-right">
 	    <li><a href="/">GroupWorkBase に戻る</a></li>
 	  </ul>
@@ -150,13 +155,19 @@
 	  このガイドでもさきほどからページ遷移を行っていますが実はサーバーにはリクエストを投げていません。
 	  URLを見てみるとURLにハッシュ(#)が含まれているのがわかります。
 	  つまり、ページ内遷移をブラウザの履歴にも残しつつ1ページで制御しています。
-	  このようなアプリケーションをシングルページアプリケーションといいます。
+	  このようなアプリケーションをシングルページアプリケーション(SPA)といいます。
 	</p>
 	<p>
-	  Vue.js ではこのようなルーティング機能がないので <a href="https://github.com/flatiron/director">director</a>というライブラリを使って実現しています。実装は <code>js/routes.js</code> にあります。
+	  このページのソースを見てみると<code><pre>&lt;script type="text/x-template" id="xxx"&gt;...&lt;/script&gt;</pre></code>という部分が複数あることがわかります。scriptタグで且つtypeがブラウザが判断できないので通常はこのタグの中身は無視されます。この仕組を利用して各ページのテンプレートを用意し、Vue.jsでidで表示/非表示を切り替えることでページ遷移しているかのように見せています。
 	</p>
 	<p>
-	  シングルページアプリケーションで実装する必要はありません。多くのルーティングが必要となってくるとシングルページアプリケーションで実装するのは大変です。
+	  SPAで構成するメリットはどこにあるのでしょうか。ページを遷移したときに必要な項目だけを読み込むという点です。このページの右上にログイン中の場合はユーザー名を表示するようにしています。もしSPAでないアプリケーションは画面遷移のたびにユーザー情報を取得する必要がありますが、SPAの場合は画面遷移してもこの部分は再読み込みしません。つまり、本当に必要な処理だけに集中できるというわけです。
+	</p>
+	<p>
+	  Vue.js ではviewの切り替え機能はあっても、ハッシュタグで行うルーティング機能がないので <a href="https://github.com/flatiron/director">director</a>というライブラリを使ってルーティングを実現しています。実装は <code>js/routes.js</code> にあります。
+	</p>
+	<p>
+	  ただし、全てをSPAで実装する必要はありません。多くのルーティングが必要となってくるとSPAで実装するのは大変です。サーバーのAPIとうまく連携させながら必要最低限な実装を意識すると失敗が少なくなります。
 	</p>
 	<p><a href="#/guide/api" class="btn btn-primary btn-large">API連携 »</a></p>
       </script>
@@ -200,6 +211,12 @@
 	    name:{{name}}, email:{{email}}
 	  </li>
 	</ul>
+	<h4>アクセスしているユーザー名</h4>
+	<p>
+	  <code>src/app/api.php</code>の<code>/api/sample/me</code> でログイン中のユーザーをDBから取得し名前を返す実装を行っています。このページの右上の「ユーザー名表示」or「ログイン」へのリンクがこれを使って実装しています。実装しているコードは<code>js/user.js</code>です。id=user 部分のHTMLがVue.jsによって管理されていて、nameが用意されているかどうかを見て表示を切り替えています。ユーザーがログインしていない場合はHTTPのレスポンスコードが401で返されるため、<code>.done</code>を通らない、つまりnameには何もアサインされないという仕組みです。値があるかどうかは<code>v-if="name"</code>のようにしてVue.jsでは表示の切り替えを行うことができます。このように、サーバーのステータスコードを利用するのもHTTPを利用したアプリケーションだからできる工夫です。
+	</p>
+	<h4>ユーザー登録のサンプル</h4>
+	<a href="/user/register">ユーザー登録</a>をVue.jsとAPI連携で実装してみると<a href="/front/demo/register">ユーザー登録のサンプル</a>のようになります。本当はもう少し工夫が必要ですがわかりやすいように最低限な実装にしています。コードを読んで流れを追ってみてください。
 	<p><a href="#/guide/build" class="btn btn-primary btn-large">複雑なアプリ構築 »</a></p>
       </script>
 
@@ -253,5 +270,6 @@
     <script src="/bower_components/director/build/director.js"></script>
     <script src="js/app.js"></script>
     <script src="js/routes.js"></script>
+    <script src="js/user.js"></script>
   </body>
 </html>
