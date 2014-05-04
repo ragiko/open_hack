@@ -84,19 +84,6 @@
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
       <div class="caption">
-        <h3>CoffeeScript</h3>
-        <p>
-          JavaScriptのSyntax Suggerです。より可読性が高く書きやすくなります。ただし、基本JavaScriptに変換されて実行されるので、JavaScriptの理解が必須です。
-        </p>
-        <p>
-	  <a href="http://coffeescript.org/" class="btn btn-primary" role="button">CoffeeScript 公式サイト &raquo;</a>
-	</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <div class="caption">
         <h3>jQuery</h3>
         <p>
           JavaScriptのデファクトスタンダートなライブラリです。DOM操作などが簡単に行えます
@@ -191,6 +178,135 @@
         </p>
             <p><a class="btn btn-primary" role="button" href="http://dev.mysql.com/doc/refman/5.1/ja/index.html">MySQL 5.1 リファレンスマニュアル &raquo;</a></p>
             <p><a class="btn btn-primary" role="button" href="http://brtriver.github.io/dbup/ja/">Dbup ドキュメント &raquo;</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>CoffeeScript</h3>
+        <p>
+          JavaScriptのSyntax Suggerです。より可読性が高く書きやすくなります。ただし、基本JavaScriptに変換されて実行されるので、JavaScriptの理解が必須です。
+        </p>
+        <p>
+	  <a href="http://coffeescript.org/" class="btn btn-primary" role="button">CoffeeScript 公式サイト &raquo;</a>
+	</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>Grunt</h3>
+        <p>
+	  nodeで書かれたタスクランナー。gruntfile.[js|coffee]でタスクを設定します。多くのタスクが公開されておりそれらを組み合わせることでとても協力に開発をサポートします。GroupWorkBase では CoffScriptのコンパイルやファイルの更新監視から自動テスト実行などのタスクを用意しています。
+        </p>
+        <p>
+	  <a href="http://gruntjs.com/" class="btn btn-primary" role="button">Grunt 公式サイト &raquo;</a>
+	</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>Browserify</h3>
+        <p>
+	  nodeのライブラリをクライアントでも requireで読み込めるようにするビルドツールです。JavaScriptでは難しいファイルの分割、読み込みを実現するためのモジュール `brfs` を利用するためGroupWorkBaseでは利用していたりします。
+        </p>
+        <p>
+	  <a href="http://gruntjs.com/" class="btn btn-primary" role="button">Browserify 公式サイト &raquo;</a>
+	</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>bower</h3>
+        <p>
+	  JavaScriptのライブラリのバージョン、依存関係を管理しインストールできる管理ツールです。
+	  `bower.json` に書かれたライブラリがインストールされます。GroupWorkBase のデモではこれを更に使いやすくするために Grunt のプラグインである <a href="https://www.npmjs.org/package/grunt-bower-concat">grunt-bower-concat</a> を使って全てのライブラリを1ファイル(vendor.js)にまとめるタスクを利用しています。
+        </p>
+        <p>
+	  <a href="http://bower.io/" class="btn btn-primary" role="button">bower 公式サイト &raquo;</a>
+	</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>director</h3>
+        <p>
+	  シングルページアプリケーションとしてJavaScriptで利用しているルーティングライブラリ。HTML5のpushStateを利用しています。<a href="/front/demo/vote-browserify/">GroupWorkBase では Frontendの デモアプリ</a>で利用しています。
+        </p>
+        <p>
+	  <a href="https://github.com/flatiron/director" class="btn btn-primary" role="button">director GitHub &raquo;</a>
+	</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>Animate.css</h3>
+        <p>
+	  CSS3で実装されたトランザクション、アニメーションライブラリです。jsを使わずに要素にclassを追加するだけで簡単にエフェクトを追加できます。<a href="/front/demo/vote-browserify/">GroupWorkBase ではデモページのページ遷移</a>で使っています。
+        </p>
+        <p>
+	  <a href="http://daneden.github.io/animate.css/" class="btn btn-primary" role="button">Animate.css 公式サイト &raquo;</a>
+	</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>PhantomJS</h3>
+        <p>
+	  JavaScriptが実行できるヘッドレスブラウザです。コマンドラインから実行できます。GroupWorkBaseではJavaScriptのテストを実行する環境としてPhantomJSを使っています。
+        </p>
+        <p>
+	  <a href="http://phantomjs.org/" class="btn btn-primary" role="button">PhantomJS 公式サイト &raquo;</a>
+	</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>mocha</h3>
+        <p>
+	  JavaScriptのシンプルなテストランナーです。シンプルすぎてアサーションも用意されていません。標準のassertを使ったり、別途ライブラリを使うことになります。インターフェース、レポート方式が豊富なのが特徴です。GroupWorkBaseではpower-assertをBDDインターフェース、specレポートで書いています。
+        </p>
+        <p>
+	  <a href="http://visionmedia.github.io/mocha/" class="btn btn-primary" role="button">mocha 公式サイト &raquo;</a>
+	  <a href="http://d.hatena.ne.jp/hokaccha/20111202/1322840375" class="btn btn-primary" role="button">mocha 日本語解説 &raquo;</a>
+	</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>power-assert</h3>
+        <p>
+	  JavaScriptのassertをエラー時の出力情報がとてもみやすく拡張したパワーアサート系のassetです。
+	  TDDでお馴染みの<a href="http://twitter.com/t_wada">@t_wada</a>さんが開発しています。
+	  GroupWorkBase の デモで使っています。
+        </p>
+        <p>
+	  <a href="https://github.com/twada/power-assert" class="btn btn-primary" role="button">power-assert GitHub &raquo;</a>
+	</p>
       </div>
     </div>
   </div>
