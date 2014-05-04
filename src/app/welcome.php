@@ -5,7 +5,7 @@
 $app->get('/', function() use ($app) {
         $app->render('top/index.html.twig');
     })
-    ->name('top')
+    ->name('welcome')
 ;
 
 /**
