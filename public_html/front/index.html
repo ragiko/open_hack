@@ -57,7 +57,7 @@
 		<li><a href="#/guide/event">イベント</a></li>
 		<li><a href="#/guide/route">ページ遷移</a></li>
 		<li><a href="#/guide/api">API連携</a></li>
-		<li><a href="#/guide/build">アプリ構築</a></li>
+		<li><a href="#/guide/build">複雑なアプリ構築</a></li>
 		<li><a href="#/guide/test">テスト</a></li>
 	      </ul>
             </li>
@@ -66,11 +66,13 @@
             <li class="dropdown">
 	      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Demo <b class="caret"></b></a>
 	      <ul class="dropdown-menu">
-                <li class="dropdown-header">Vue.js 構築例</li>
-		<li><a href="/front/demo/vote/">Vue.js + director.js</a></li>
-		<li><a href="/front/demo/vote-browserify/">Vue.js + director.js with browserify</a></li>
-		<li><a href="/front/demo/register/">Vue.js + API(GroupWorkBase)</a></li>
-                <li class="dropdown-header">Vue.js demo appliation</li>
+                <li class="dropdown-header">Vue.js シンプルなデモ</li>
+		<li><a href="/front/demo/vote/">投票アプリ (director.js)</a></li>
+		<li><a href="/front/demo/register/">会員登録 確認画面無し (API連携)</a></li>
+                <li class="dropdown-header">Vue.js 高度なデモ (browserify, CoffeeScript, Grunt, animation)</li>
+		<li><a href="/front/demo/vote-browserify/">投票アプリ (director.js)</a></li>
+		<li><a href="/front/demo/register-browserify/">会員登録 確認画面あり (API連携)</a></li>
+                <li class="dropdown-header">Vue.js のその他のデモ</li>
 		<li><a href="/front/demo/commits/">git commits viewer</a></li>
 		<li><a href="/front/demo/todomvc/">todomvc</a></li>
 		<li><a href="/front/demo/vote-component/">Vue.js + page.js with component</a></li>
@@ -217,7 +219,7 @@
 	  <code>src/app/api.php</code>の<code>/api/sample/me</code> でログイン中のユーザーをDBから取得し名前を返す実装を行っています。このページの右上の「ユーザー名表示」or「ログイン」へのリンクがこれを使って実装しています。実装しているコードは<code>js/user.js</code>です。id=user 部分のHTMLがVue.jsによって管理されていて、nameが用意されているかどうかを見て表示を切り替えています。ユーザーがログインしていない場合はHTTPのレスポンスコードが401で返されるため、<code>.done</code>を通らない、つまりnameには何もアサインされないという仕組みです。値があるかどうかは<code>v-if="name"</code>のようにしてVue.jsでは表示の切り替えを行うことができます。このように、サーバーのステータスコードを利用するのもHTTPを利用したアプリケーションだからできる工夫です。
 	</p>
 	<h4>ユーザー登録のサンプル</h4>
-	<a href="/user/register">ユーザー登録</a>をVue.jsとAPI連携で実装してみると<a href="/front/demo/register">ユーザー登録のサンプル</a>のようになります。本当はもう少し工夫が必要ですがわかりやすいように最低限な実装にしています。コードを読んで流れを追ってみてください。
+	<a href="/user/register/">ユーザー登録</a>をVue.jsとAPI連携で実装してみると<a href="/front/demo/register/">ユーザー登録のサンプル</a>のようになります。本当はもう少し工夫が必要ですがわかりやすいように最低限な実装にしています。コードを読んで流れを追ってみてください。
 	<p><a href="#/guide/build" class="btn btn-primary btn-large">複雑なアプリ構築 »</a></p>
       </script>
 
@@ -250,6 +252,11 @@
 	<h4>アニメーション</h4>
 	<p>
 	  シングルページアプリケーションは画面遷移がユーザーに伝わりにくいため、適度なアニメーションを入れることで使いやすくなる場合があります。demoで用意したアプリでは<a href="http://daneden.github.io/animate.css/">animate.css</a>というHTML5 + CSS3 ベースのアニメーションを使って画面遷移時にアニメーションを入れています。jsを使わずにクラスを要素に追加するだけでアニメーションができます。
+	</p>
+	<h4>確認画面の実装</h4>
+	<p>
+	  登録前に確認画面を表示したいという場合も多いと思います。そのサンプルとして<a href="/front/demo/register-browserify/">ユーザー登録の確認画面有りのサンプル</a>を作りました。注意点は確認画面には一意となるURLは必要ない、つまりルーティングを作らなくて良いという点です。
+	  直接確認画面をブックマークされたりしてアクセスされることがないからです。<a href="/front/demo/register-browserify/">サンプルアプリ</a>を見てもらえばその意味がわかってもらえると思います。
 	</p>
 	<p><a href="#/guide/test" class="btn btn-primary btn-large">テスト »</a></p>
       </script>

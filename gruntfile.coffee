@@ -8,8 +8,9 @@ module.exports = (grunt) ->
   
   grunt.initConfig
     app_path: 'public_html/front/demo/vote-browserify'
+    app2_path: 'public_html/front/demo/register-browserify'
     bower_concat:
-      all:
+      app:
         dest: '<%= app_path %>/build/vendor.js'
         dependencies: 'underscore': 'jquery'
         mainFiles:
@@ -19,7 +20,14 @@ module.exports = (grunt) ->
         ]
         bowerOptions:
           relative: false
-
+      app2:
+        dest: '<%= app2_path %>/build/vendor.js'
+        dependencies: 'underscore': 'jquery'
+        exclude: [
+          'marked', 'moment', 'todomvc-common', 'animate.css', 'director'
+        ]
+        bowerOptions:
+          relative: false
     browserify:
       app:
         files:
@@ -35,8 +43,15 @@ module.exports = (grunt) ->
           ]
         options:
           transform: ['coffeeify', 'brfs', 'espowerify']
+      app2:
+        files:
+          '<%= app2_path %>/build/main.js': [
+            '<%= app2_path %>/src/main.coffee'
+          ]
+        options:
+          transform: ['coffeeify', 'brfs']
     copy:
-      css:
+      app:
        expand: true
        cwd: 'public_html/bower_components/'
        flatten: true
@@ -45,10 +60,24 @@ module.exports = (grunt) ->
         'bootstrap/dist/css/bootstrap.css'
         ]
        dest: '<%= app_path %>/build/css/'
+      app2:
+       expand: true
+       cwd: 'public_html/bower_components/'
+       flatten: true
+       src: [
+        'animate.css/animate.min.css'
+        'bootstrap/dist/css/bootstrap.css'
+        ]
+       dest:  '<%= app2_path %>/build/css/'
         
     esteWatch:
       options:
-        dirs: ['<%= app_path %>/src/**/', '<%= app_path %>/test/**/', 'src/**/']
+        dirs: [
+          '<%= app_path %>/src/**/',
+          '<%= app_path %>/test/**/',
+           'src/**/',
+          '<%= app2_path %>/src/**/',
+          ]
       html: -> 'browserify'
       coffee: -> ['browserify', 'test']
       php: -> 'shell:phpunit'
@@ -62,7 +91,7 @@ module.exports = (grunt) ->
       phpunit:
         command: 'make test'
 
-  grunt.registerTask "build", ["bower_concat", "copy:css", "browserify"]
+  grunt.registerTask "build", ["bower_concat", "copy", "browserify"]
   grunt.registerTask "test", ["mocha_phantomjs"]
   grunt.registerTask "watch", ["esteWatch"]
   grunt.registerTask "default", ["build"]

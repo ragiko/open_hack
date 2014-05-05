@@ -25,30 +25,45 @@ $app->get('/api/sample/users', $haltUnlessAjaxRequest, function() use ($jsonResp
         $jsonResponse($data);
     });
 
+$errorIfInvalidNewUser = function($input) use ($app, $jsonResponse){
+    $validator = new \Vg\Validator\UserRegister();
+    if (!$validator->validate($input)) {
+        $jsonResponse($validator->errors(), 400);
+        $app->stop();
+    }
+
+    return true;
+};
+
+/**
+ * API ユーザー登録のバリデーションサンプル(確認画面)
+ */
+$app->put('/api/sample/user', $haltUnlessAjaxRequest, function() use ($app, $container, $jsonResponse, $errorIfInvalidNewUser) {
+
+        $input = $app->request()->post();
+        $errorIfInvalidNewUser($input);
+        $jsonResponse([]);
+    });
+
 /**
  * API ユーザー登録のサンプル
  */
-$app->post('/api/sample/user', $haltUnlessAjaxRequest, function() use ($app, $container, $jsonResponse) {
+$app->post('/api/sample/user', $haltUnlessAjaxRequest, function() use ($app, $container, $jsonResponse, $errorIfInvalidNewUser) {
 
         $input = $app->request()->post();
-        $validator = new \Vg\Validator\UserRegister();
+        $errorIfInvalidNewUser($input);
 
-        if ($validator->validate($input)) {
-            $user = new \Vg\Model\User();
-            $user->setProperties($input);
+        $user = new \Vg\Model\User();
+        $user->setProperties($input);
 
-            $repository = $container['repository.user'];
-            try {
-                $repository->insert($user);
-            } catch (Exception $e) {
-                $jsonResponse($e->getMessage(), 500);
-                $app->stop();
-            }
-            $jsonResponse([]);
+        $repository = $container['repository.user'];
+        try {
+            $repository->insert($user);
+        } catch (Exception $e) {
+            $jsonResponse($e->getMessage(), 500);
             $app->stop();
         }
-        // validation error
-        $jsonResponse($validator->errors(), 400);
+        $jsonResponse([]);
     });
 
 /**
