@@ -43,6 +43,11 @@ watch:
 test-front:
 	$(GRUNT) test
 
+clean:
+	rm -fr public_html/bower_components
+	rm -fr node_modules
+	rm -fr vendor
+
 component:
 	cd ./public_html/front/demo/vote-component; \
 	$(COMPONENT) install; \
