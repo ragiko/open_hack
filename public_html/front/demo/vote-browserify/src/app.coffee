@@ -13,8 +13,10 @@ module.exports = ->
     methods:
       init: ->
         title: ''
+      find: (id) ->
+        _.findWhere @$data.items, {id: Number(id)}
       vote: (id, vm) ->
-        item = _.findWhere @$data.items, {id: id}
+        item = @find(id)
         item.like += 1
       update: (item) ->
         window.location.href = '#/';

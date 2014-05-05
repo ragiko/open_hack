@@ -2375,55 +2375,132 @@ process.chdir = function (dir) {
 /* vim: set sw=4 ts=4 et tw=80 : */
 
 },{}],10:[function(require,module,exports){
-var assert;
+var assert, data;
 assert = require('power-assert');
-describe('currentView', function () {
-    return it('should return "list" at first', function () {
-        var currentView;
-        currentView = app.currentView;
-        return assert.ok(assert._expr(assert._capt(assert._capt(currentView, 'left') === 'list', ''), {
+data = app.$data;
+describe('vote method', function () {
+    return it('should add +1 like', function () {
+        var actual, items;
+        items = [
+            {
+                id: 1,
+                like: 10
+            },
+            {
+                id: 2,
+                like: 10
+            },
+            {
+                id: 3,
+                like: 10
+            }
+        ];
+        actual = data.items = items;
+        app.vote(2);
+        assert.ok(assert._expr(assert._capt(assert._capt(assert._capt(assert._capt(actual, 'left/object/object')[0], 'left/object').like, 'left') === 10, ''), {
             tree: {
                 'type': 'BinaryExpression',
                 'operator': '===',
                 'left': {
-                    'type': 'Identifier',
-                    'name': 'currentView',
+                    'type': 'MemberExpression',
+                    'computed': false,
+                    'object': {
+                        'type': 'MemberExpression',
+                        'computed': true,
+                        'object': {
+                            'type': 'Identifier',
+                            'name': 'actual',
+                            'loc': {
+                                'start': {
+                                    'line': 24,
+                                    'column': 14
+                                },
+                                'end': {
+                                    'line': 24,
+                                    'column': 20
+                                },
+                                'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                            }
+                        },
+                        'property': {
+                            'type': 'Literal',
+                            'value': 0,
+                            'raw': '0',
+                            'loc': {
+                                'start': {
+                                    'line': 24,
+                                    'column': 21
+                                },
+                                'end': {
+                                    'line': 24,
+                                    'column': 22
+                                },
+                                'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                            }
+                        },
+                        'loc': {
+                            'start': {
+                                'line': 24,
+                                'column': 14
+                            },
+                            'end': {
+                                'line': 24,
+                                'column': 23
+                            },
+                            'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                        }
+                    },
+                    'property': {
+                        'type': 'Identifier',
+                        'name': 'like',
+                        'loc': {
+                            'start': {
+                                'line': 24,
+                                'column': 24
+                            },
+                            'end': {
+                                'line': 24,
+                                'column': 28
+                            },
+                            'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                        }
+                    },
                     'loc': {
                         'start': {
-                            'line': 9,
-                            'column': 21
+                            'line': 24,
+                            'column': 14
                         },
                         'end': {
-                            'line': 9,
-                            'column': 32
+                            'line': 24,
+                            'column': 28
                         },
                         'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
                     }
                 },
                 'right': {
                     'type': 'Literal',
-                    'value': 'list',
-                    'raw': '\'list\'',
+                    'value': 10,
+                    'raw': '10',
                     'loc': {
                         'start': {
-                            'line': 9,
-                            'column': 37
+                            'line': 24,
+                            'column': 33
                         },
                         'end': {
-                            'line': 9,
-                            'column': 43
+                            'line': 24,
+                            'column': 35
                         },
                         'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
                     }
                 },
                 'loc': {
                     'start': {
-                        'line': 9,
-                        'column': 21
+                        'line': 24,
+                        'column': 14
                     },
                     'end': {
-                        'line': 9,
-                        'column': 43
+                        'line': 24,
+                        'column': 35
                     },
                     'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
                 }
@@ -2431,14 +2508,1105 @@ describe('currentView', function () {
             tokens: [
                 {
                     'type': 'Identifier',
-                    'value': 'currentView',
+                    'value': 'actual',
                     'loc': {
                         'start': {
-                            'line': 9,
+                            'line': 24,
+                            'column': 14
+                        },
+                        'end': {
+                            'line': 24,
+                            'column': 20
+                        }
+                    }
+                },
+                {
+                    'type': 'Punctuator',
+                    'value': '[',
+                    'loc': {
+                        'start': {
+                            'line': 24,
+                            'column': 20
+                        },
+                        'end': {
+                            'line': 24,
+                            'column': 21
+                        }
+                    }
+                },
+                {
+                    'type': 'Numeric',
+                    'value': '0',
+                    'loc': {
+                        'start': {
+                            'line': 24,
                             'column': 21
                         },
                         'end': {
-                            'line': 9,
+                            'line': 24,
+                            'column': 22
+                        }
+                    }
+                },
+                {
+                    'type': 'Punctuator',
+                    'value': ']',
+                    'loc': {
+                        'start': {
+                            'line': 24,
+                            'column': 22
+                        },
+                        'end': {
+                            'line': 24,
+                            'column': 23
+                        }
+                    }
+                },
+                {
+                    'type': 'Punctuator',
+                    'value': '.',
+                    'loc': {
+                        'start': {
+                            'line': 24,
+                            'column': 23
+                        },
+                        'end': {
+                            'line': 24,
+                            'column': 24
+                        }
+                    }
+                },
+                {
+                    'type': 'Identifier',
+                    'value': 'like',
+                    'loc': {
+                        'start': {
+                            'line': 24,
+                            'column': 24
+                        },
+                        'end': {
+                            'line': 24,
+                            'column': 28
+                        }
+                    }
+                },
+                {
+                    'type': 'Punctuator',
+                    'value': '===',
+                    'loc': {
+                        'start': {
+                            'line': 24,
+                            'column': 29
+                        },
+                        'end': {
+                            'line': 24,
+                            'column': 32
+                        }
+                    }
+                },
+                {
+                    'type': 'Numeric',
+                    'value': '10',
+                    'loc': {
+                        'start': {
+                            'line': 24,
+                            'column': 33
+                        },
+                        'end': {
+                            'line': 24,
+                            'column': 35
+                        }
+                    }
+                }
+            ],
+            content: '    assert.ok(actual[0].like === 10, \'id:1 is not target\');',
+            filepath: '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+        }), 'id:1 is not target');
+        assert.ok(assert._expr(assert._capt(assert._capt(assert._capt(assert._capt(actual, 'left/object/object')[1], 'left/object').like, 'left') === 11, ''), {
+            tree: {
+                'type': 'BinaryExpression',
+                'operator': '===',
+                'left': {
+                    'type': 'MemberExpression',
+                    'computed': false,
+                    'object': {
+                        'type': 'MemberExpression',
+                        'computed': true,
+                        'object': {
+                            'type': 'Identifier',
+                            'name': 'actual',
+                            'loc': {
+                                'start': {
+                                    'line': 25,
+                                    'column': 14
+                                },
+                                'end': {
+                                    'line': 25,
+                                    'column': 20
+                                },
+                                'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                            }
+                        },
+                        'property': {
+                            'type': 'Literal',
+                            'value': 1,
+                            'raw': '1',
+                            'loc': {
+                                'start': {
+                                    'line': 25,
+                                    'column': 21
+                                },
+                                'end': {
+                                    'line': 25,
+                                    'column': 22
+                                },
+                                'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                            }
+                        },
+                        'loc': {
+                            'start': {
+                                'line': 25,
+                                'column': 14
+                            },
+                            'end': {
+                                'line': 25,
+                                'column': 23
+                            },
+                            'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                        }
+                    },
+                    'property': {
+                        'type': 'Identifier',
+                        'name': 'like',
+                        'loc': {
+                            'start': {
+                                'line': 25,
+                                'column': 24
+                            },
+                            'end': {
+                                'line': 25,
+                                'column': 28
+                            },
+                            'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                        }
+                    },
+                    'loc': {
+                        'start': {
+                            'line': 25,
+                            'column': 14
+                        },
+                        'end': {
+                            'line': 25,
+                            'column': 28
+                        },
+                        'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                    }
+                },
+                'right': {
+                    'type': 'Literal',
+                    'value': 11,
+                    'raw': '11',
+                    'loc': {
+                        'start': {
+                            'line': 25,
+                            'column': 33
+                        },
+                        'end': {
+                            'line': 25,
+                            'column': 35
+                        },
+                        'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                    }
+                },
+                'loc': {
+                    'start': {
+                        'line': 25,
+                        'column': 14
+                    },
+                    'end': {
+                        'line': 25,
+                        'column': 35
+                    },
+                    'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                }
+            },
+            tokens: [
+                {
+                    'type': 'Identifier',
+                    'value': 'actual',
+                    'loc': {
+                        'start': {
+                            'line': 25,
+                            'column': 14
+                        },
+                        'end': {
+                            'line': 25,
+                            'column': 20
+                        }
+                    }
+                },
+                {
+                    'type': 'Punctuator',
+                    'value': '[',
+                    'loc': {
+                        'start': {
+                            'line': 25,
+                            'column': 20
+                        },
+                        'end': {
+                            'line': 25,
+                            'column': 21
+                        }
+                    }
+                },
+                {
+                    'type': 'Numeric',
+                    'value': '1',
+                    'loc': {
+                        'start': {
+                            'line': 25,
+                            'column': 21
+                        },
+                        'end': {
+                            'line': 25,
+                            'column': 22
+                        }
+                    }
+                },
+                {
+                    'type': 'Punctuator',
+                    'value': ']',
+                    'loc': {
+                        'start': {
+                            'line': 25,
+                            'column': 22
+                        },
+                        'end': {
+                            'line': 25,
+                            'column': 23
+                        }
+                    }
+                },
+                {
+                    'type': 'Punctuator',
+                    'value': '.',
+                    'loc': {
+                        'start': {
+                            'line': 25,
+                            'column': 23
+                        },
+                        'end': {
+                            'line': 25,
+                            'column': 24
+                        }
+                    }
+                },
+                {
+                    'type': 'Identifier',
+                    'value': 'like',
+                    'loc': {
+                        'start': {
+                            'line': 25,
+                            'column': 24
+                        },
+                        'end': {
+                            'line': 25,
+                            'column': 28
+                        }
+                    }
+                },
+                {
+                    'type': 'Punctuator',
+                    'value': '===',
+                    'loc': {
+                        'start': {
+                            'line': 25,
+                            'column': 29
+                        },
+                        'end': {
+                            'line': 25,
+                            'column': 32
+                        }
+                    }
+                },
+                {
+                    'type': 'Numeric',
+                    'value': '11',
+                    'loc': {
+                        'start': {
+                            'line': 25,
+                            'column': 33
+                        },
+                        'end': {
+                            'line': 25,
+                            'column': 35
+                        }
+                    }
+                }
+            ],
+            content: '    assert.ok(actual[1].like === 11, \'id:2 is target\');',
+            filepath: '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+        }), 'id:2 is target');
+        return assert.ok(assert._expr(assert._capt(assert._capt(assert._capt(assert._capt(actual, 'left/object/object')[2], 'left/object').like, 'left') === 10, ''), {
+            tree: {
+                'type': 'BinaryExpression',
+                'operator': '===',
+                'left': {
+                    'type': 'MemberExpression',
+                    'computed': false,
+                    'object': {
+                        'type': 'MemberExpression',
+                        'computed': true,
+                        'object': {
+                            'type': 'Identifier',
+                            'name': 'actual',
+                            'loc': {
+                                'start': {
+                                    'line': 26,
+                                    'column': 21
+                                },
+                                'end': {
+                                    'line': 26,
+                                    'column': 27
+                                },
+                                'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                            }
+                        },
+                        'property': {
+                            'type': 'Literal',
+                            'value': 2,
+                            'raw': '2',
+                            'loc': {
+                                'start': {
+                                    'line': 26,
+                                    'column': 28
+                                },
+                                'end': {
+                                    'line': 26,
+                                    'column': 29
+                                },
+                                'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                            }
+                        },
+                        'loc': {
+                            'start': {
+                                'line': 26,
+                                'column': 21
+                            },
+                            'end': {
+                                'line': 26,
+                                'column': 30
+                            },
+                            'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                        }
+                    },
+                    'property': {
+                        'type': 'Identifier',
+                        'name': 'like',
+                        'loc': {
+                            'start': {
+                                'line': 26,
+                                'column': 31
+                            },
+                            'end': {
+                                'line': 26,
+                                'column': 35
+                            },
+                            'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                        }
+                    },
+                    'loc': {
+                        'start': {
+                            'line': 26,
+                            'column': 21
+                        },
+                        'end': {
+                            'line': 26,
+                            'column': 35
+                        },
+                        'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                    }
+                },
+                'right': {
+                    'type': 'Literal',
+                    'value': 10,
+                    'raw': '10',
+                    'loc': {
+                        'start': {
+                            'line': 26,
+                            'column': 40
+                        },
+                        'end': {
+                            'line': 26,
+                            'column': 42
+                        },
+                        'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                    }
+                },
+                'loc': {
+                    'start': {
+                        'line': 26,
+                        'column': 21
+                    },
+                    'end': {
+                        'line': 26,
+                        'column': 42
+                    },
+                    'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                }
+            },
+            tokens: [
+                {
+                    'type': 'Identifier',
+                    'value': 'actual',
+                    'loc': {
+                        'start': {
+                            'line': 26,
+                            'column': 21
+                        },
+                        'end': {
+                            'line': 26,
+                            'column': 27
+                        }
+                    }
+                },
+                {
+                    'type': 'Punctuator',
+                    'value': '[',
+                    'loc': {
+                        'start': {
+                            'line': 26,
+                            'column': 27
+                        },
+                        'end': {
+                            'line': 26,
+                            'column': 28
+                        }
+                    }
+                },
+                {
+                    'type': 'Numeric',
+                    'value': '2',
+                    'loc': {
+                        'start': {
+                            'line': 26,
+                            'column': 28
+                        },
+                        'end': {
+                            'line': 26,
+                            'column': 29
+                        }
+                    }
+                },
+                {
+                    'type': 'Punctuator',
+                    'value': ']',
+                    'loc': {
+                        'start': {
+                            'line': 26,
+                            'column': 29
+                        },
+                        'end': {
+                            'line': 26,
+                            'column': 30
+                        }
+                    }
+                },
+                {
+                    'type': 'Punctuator',
+                    'value': '.',
+                    'loc': {
+                        'start': {
+                            'line': 26,
+                            'column': 30
+                        },
+                        'end': {
+                            'line': 26,
+                            'column': 31
+                        }
+                    }
+                },
+                {
+                    'type': 'Identifier',
+                    'value': 'like',
+                    'loc': {
+                        'start': {
+                            'line': 26,
+                            'column': 31
+                        },
+                        'end': {
+                            'line': 26,
+                            'column': 35
+                        }
+                    }
+                },
+                {
+                    'type': 'Punctuator',
+                    'value': '===',
+                    'loc': {
+                        'start': {
+                            'line': 26,
+                            'column': 36
+                        },
+                        'end': {
+                            'line': 26,
+                            'column': 39
+                        }
+                    }
+                },
+                {
+                    'type': 'Numeric',
+                    'value': '10',
+                    'loc': {
+                        'start': {
+                            'line': 26,
+                            'column': 40
+                        },
+                        'end': {
+                            'line': 26,
+                            'column': 42
+                        }
+                    }
+                }
+            ],
+            content: '    return assert.ok(actual[2].like === 10, \'id:3 is not target\');',
+            filepath: '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+        }), 'id:3 is not target');
+    });
+});
+describe('add method', function () {
+    return it('should add a new item with max+1 id', function () {
+        var actual, items;
+        items = [
+            {
+                id: 1,
+                like: 10
+            },
+            {
+                id: 2,
+                like: 10
+            },
+            {
+                id: 3,
+                like: 10
+            }
+        ];
+        actual = data.items = items;
+        app.add({ title: 'added' });
+        return assert.ok(assert._expr(assert._capt(assert._capt(assert._capt(assert._capt(actual, 'left/object/object')[3], 'left/object').id, 'left') === 4, ''), {
+            tree: {
+                'type': 'BinaryExpression',
+                'operator': '===',
+                'left': {
+                    'type': 'MemberExpression',
+                    'computed': false,
+                    'object': {
+                        'type': 'MemberExpression',
+                        'computed': true,
+                        'object': {
+                            'type': 'Identifier',
+                            'name': 'actual',
+                            'loc': {
+                                'start': {
+                                    'line': 49,
+                                    'column': 21
+                                },
+                                'end': {
+                                    'line': 49,
+                                    'column': 27
+                                },
+                                'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                            }
+                        },
+                        'property': {
+                            'type': 'Literal',
+                            'value': 3,
+                            'raw': '3',
+                            'loc': {
+                                'start': {
+                                    'line': 49,
+                                    'column': 28
+                                },
+                                'end': {
+                                    'line': 49,
+                                    'column': 29
+                                },
+                                'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                            }
+                        },
+                        'loc': {
+                            'start': {
+                                'line': 49,
+                                'column': 21
+                            },
+                            'end': {
+                                'line': 49,
+                                'column': 30
+                            },
+                            'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                        }
+                    },
+                    'property': {
+                        'type': 'Identifier',
+                        'name': 'id',
+                        'loc': {
+                            'start': {
+                                'line': 49,
+                                'column': 31
+                            },
+                            'end': {
+                                'line': 49,
+                                'column': 33
+                            },
+                            'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                        }
+                    },
+                    'loc': {
+                        'start': {
+                            'line': 49,
+                            'column': 21
+                        },
+                        'end': {
+                            'line': 49,
+                            'column': 33
+                        },
+                        'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                    }
+                },
+                'right': {
+                    'type': 'Literal',
+                    'value': 4,
+                    'raw': '4',
+                    'loc': {
+                        'start': {
+                            'line': 49,
+                            'column': 38
+                        },
+                        'end': {
+                            'line': 49,
+                            'column': 39
+                        },
+                        'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                    }
+                },
+                'loc': {
+                    'start': {
+                        'line': 49,
+                        'column': 21
+                    },
+                    'end': {
+                        'line': 49,
+                        'column': 39
+                    },
+                    'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                }
+            },
+            tokens: [
+                {
+                    'type': 'Identifier',
+                    'value': 'actual',
+                    'loc': {
+                        'start': {
+                            'line': 49,
+                            'column': 21
+                        },
+                        'end': {
+                            'line': 49,
+                            'column': 27
+                        }
+                    }
+                },
+                {
+                    'type': 'Punctuator',
+                    'value': '[',
+                    'loc': {
+                        'start': {
+                            'line': 49,
+                            'column': 27
+                        },
+                        'end': {
+                            'line': 49,
+                            'column': 28
+                        }
+                    }
+                },
+                {
+                    'type': 'Numeric',
+                    'value': '3',
+                    'loc': {
+                        'start': {
+                            'line': 49,
+                            'column': 28
+                        },
+                        'end': {
+                            'line': 49,
+                            'column': 29
+                        }
+                    }
+                },
+                {
+                    'type': 'Punctuator',
+                    'value': ']',
+                    'loc': {
+                        'start': {
+                            'line': 49,
+                            'column': 29
+                        },
+                        'end': {
+                            'line': 49,
+                            'column': 30
+                        }
+                    }
+                },
+                {
+                    'type': 'Punctuator',
+                    'value': '.',
+                    'loc': {
+                        'start': {
+                            'line': 49,
+                            'column': 30
+                        },
+                        'end': {
+                            'line': 49,
+                            'column': 31
+                        }
+                    }
+                },
+                {
+                    'type': 'Identifier',
+                    'value': 'id',
+                    'loc': {
+                        'start': {
+                            'line': 49,
+                            'column': 31
+                        },
+                        'end': {
+                            'line': 49,
+                            'column': 33
+                        }
+                    }
+                },
+                {
+                    'type': 'Punctuator',
+                    'value': '===',
+                    'loc': {
+                        'start': {
+                            'line': 49,
+                            'column': 34
+                        },
+                        'end': {
+                            'line': 49,
+                            'column': 37
+                        }
+                    }
+                },
+                {
+                    'type': 'Numeric',
+                    'value': '4',
+                    'loc': {
+                        'start': {
+                            'line': 49,
+                            'column': 38
+                        },
+                        'end': {
+                            'line': 49,
+                            'column': 39
+                        }
+                    }
+                }
+            ],
+            content: '    return assert.ok(actual[3].id === 4);',
+            filepath: '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+        }));
+    });
+});
+describe('find method', function () {
+    return it('should return item', function () {
+        var actual, item, items;
+        items = [
+            {
+                id: 1,
+                like: 10
+            },
+            {
+                id: 2,
+                like: 11
+            },
+            {
+                id: 3,
+                like: 12
+            }
+        ];
+        data.items = items;
+        actual = item = app.find(2);
+        assert.ok(assert._expr(assert._capt(assert._capt(assert._capt(actual, 'left/object').id, 'left') === 2, ''), {
+            tree: {
+                'type': 'BinaryExpression',
+                'operator': '===',
+                'left': {
+                    'type': 'MemberExpression',
+                    'computed': false,
+                    'object': {
+                        'type': 'Identifier',
+                        'name': 'actual',
+                        'loc': {
+                            'start': {
+                                'line': 70,
+                                'column': 14
+                            },
+                            'end': {
+                                'line': 70,
+                                'column': 20
+                            },
+                            'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                        }
+                    },
+                    'property': {
+                        'type': 'Identifier',
+                        'name': 'id',
+                        'loc': {
+                            'start': {
+                                'line': 70,
+                                'column': 21
+                            },
+                            'end': {
+                                'line': 70,
+                                'column': 23
+                            },
+                            'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                        }
+                    },
+                    'loc': {
+                        'start': {
+                            'line': 70,
+                            'column': 14
+                        },
+                        'end': {
+                            'line': 70,
+                            'column': 23
+                        },
+                        'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                    }
+                },
+                'right': {
+                    'type': 'Literal',
+                    'value': 2,
+                    'raw': '2',
+                    'loc': {
+                        'start': {
+                            'line': 70,
+                            'column': 28
+                        },
+                        'end': {
+                            'line': 70,
+                            'column': 29
+                        },
+                        'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                    }
+                },
+                'loc': {
+                    'start': {
+                        'line': 70,
+                        'column': 14
+                    },
+                    'end': {
+                        'line': 70,
+                        'column': 29
+                    },
+                    'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                }
+            },
+            tokens: [
+                {
+                    'type': 'Identifier',
+                    'value': 'actual',
+                    'loc': {
+                        'start': {
+                            'line': 70,
+                            'column': 14
+                        },
+                        'end': {
+                            'line': 70,
+                            'column': 20
+                        }
+                    }
+                },
+                {
+                    'type': 'Punctuator',
+                    'value': '.',
+                    'loc': {
+                        'start': {
+                            'line': 70,
+                            'column': 20
+                        },
+                        'end': {
+                            'line': 70,
+                            'column': 21
+                        }
+                    }
+                },
+                {
+                    'type': 'Identifier',
+                    'value': 'id',
+                    'loc': {
+                        'start': {
+                            'line': 70,
+                            'column': 21
+                        },
+                        'end': {
+                            'line': 70,
+                            'column': 23
+                        }
+                    }
+                },
+                {
+                    'type': 'Punctuator',
+                    'value': '===',
+                    'loc': {
+                        'start': {
+                            'line': 70,
+                            'column': 24
+                        },
+                        'end': {
+                            'line': 70,
+                            'column': 27
+                        }
+                    }
+                },
+                {
+                    'type': 'Numeric',
+                    'value': '2',
+                    'loc': {
+                        'start': {
+                            'line': 70,
+                            'column': 28
+                        },
+                        'end': {
+                            'line': 70,
+                            'column': 29
+                        }
+                    }
+                }
+            ],
+            content: '    assert.ok(actual.id === 2);',
+            filepath: '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+        }));
+        return assert.ok(assert._expr(assert._capt(assert._capt(assert._capt(actual, 'left/object').like, 'left') === 11, ''), {
+            tree: {
+                'type': 'BinaryExpression',
+                'operator': '===',
+                'left': {
+                    'type': 'MemberExpression',
+                    'computed': false,
+                    'object': {
+                        'type': 'Identifier',
+                        'name': 'actual',
+                        'loc': {
+                            'start': {
+                                'line': 71,
+                                'column': 21
+                            },
+                            'end': {
+                                'line': 71,
+                                'column': 27
+                            },
+                            'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                        }
+                    },
+                    'property': {
+                        'type': 'Identifier',
+                        'name': 'like',
+                        'loc': {
+                            'start': {
+                                'line': 71,
+                                'column': 28
+                            },
+                            'end': {
+                                'line': 71,
+                                'column': 32
+                            },
+                            'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                        }
+                    },
+                    'loc': {
+                        'start': {
+                            'line': 71,
+                            'column': 21
+                        },
+                        'end': {
+                            'line': 71,
+                            'column': 32
+                        },
+                        'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                    }
+                },
+                'right': {
+                    'type': 'Literal',
+                    'value': 11,
+                    'raw': '11',
+                    'loc': {
+                        'start': {
+                            'line': 71,
+                            'column': 37
+                        },
+                        'end': {
+                            'line': 71,
+                            'column': 39
+                        },
+                        'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                    }
+                },
+                'loc': {
+                    'start': {
+                        'line': 71,
+                        'column': 21
+                    },
+                    'end': {
+                        'line': 71,
+                        'column': 39
+                    },
+                    'source': '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
+                }
+            },
+            tokens: [
+                {
+                    'type': 'Identifier',
+                    'value': 'actual',
+                    'loc': {
+                        'start': {
+                            'line': 71,
+                            'column': 21
+                        },
+                        'end': {
+                            'line': 71,
+                            'column': 27
+                        }
+                    }
+                },
+                {
+                    'type': 'Punctuator',
+                    'value': '.',
+                    'loc': {
+                        'start': {
+                            'line': 71,
+                            'column': 27
+                        },
+                        'end': {
+                            'line': 71,
+                            'column': 28
+                        }
+                    }
+                },
+                {
+                    'type': 'Identifier',
+                    'value': 'like',
+                    'loc': {
+                        'start': {
+                            'line': 71,
+                            'column': 28
+                        },
+                        'end': {
+                            'line': 71,
                             'column': 32
                         }
                     }
@@ -2448,31 +3616,31 @@ describe('currentView', function () {
                     'value': '===',
                     'loc': {
                         'start': {
-                            'line': 9,
+                            'line': 71,
                             'column': 33
                         },
                         'end': {
-                            'line': 9,
+                            'line': 71,
                             'column': 36
                         }
                     }
                 },
                 {
-                    'type': 'String',
-                    'value': '\'list\'',
+                    'type': 'Numeric',
+                    'value': '11',
                     'loc': {
                         'start': {
-                            'line': 9,
+                            'line': 71,
                             'column': 37
                         },
                         'end': {
-                            'line': 9,
-                            'column': 43
+                            'line': 71,
+                            'column': 39
                         }
                     }
                 }
             ],
-            content: '    return assert.ok(currentView === \'list\');',
+            content: '    return assert.ok(actual.like === 11);',
             filepath: '/private/var/www/GroupWorkBase/public_html/front/demo/vote-browserify/test/test.coffee'
         }));
     });

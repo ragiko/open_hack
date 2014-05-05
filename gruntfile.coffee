@@ -49,6 +49,7 @@ module.exports = (grunt) ->
     esteWatch:
       options:
         dirs: ['<%= app_path %>/src/**/', '<%= app_path %>/test/**/', 'src/**/']
+      html: -> 'browserify'
       coffee: -> ['browserify', 'test']
       php: -> 'shell:phpunit'
 

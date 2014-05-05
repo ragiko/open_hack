@@ -14,14 +14,17 @@
         {id: 1, title: 'TODOアプリ', like: 0},
         {id: 2, title: 'BBSアプリ', like: 5},
         {id: 3, title: 'Twitterアプリ', like: 10}
-    ]
+      ]
     },
     methods: {
       init: function(){
         return {title: ''};
       },
+      find: function(id){
+        return _.findWhere(this.$data.items, {id: Number(id)});
+      },
       vote: function(id){
-        var item = _.findWhere(this.$data.items, {id: id});
+        var item = this.find(id);
         item.like += 1;
       },
       update: function(item) {
@@ -41,22 +44,21 @@
     }
   });
 
+  var data = app.$data;
   var routes = {
     '/': function() {
-      app.item = app.init();
-      app.currentView = 'list';
+      data.currentView = 'list';
     },
     '/list': function() {
-      app.item = app.init();
-      app.currentView = 'list';
+      data.currentView = 'list';
     },
     '/new': function() {
-      app.item = app.init();
-      app.currentView = 'new';
+      data.item = app.init();
+      data.currentView = 'new';
     },
     '/edit/:id': function(id) {
-      app.currentView = 'edit';
-      app.item = _.findWhere(app.items, {id: Number(id)});
+      data.currentView = 'edit';
+      data.item = app.find(id);
     }
   };
   var router = new Router(routes);

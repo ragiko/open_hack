@@ -1,15 +1,15 @@
 module.exports = (app) ->
   'use strict'
+
+  data = app.$data
   new Router
     '/': ->
-      app.item = app.init()
-      app.currentView = 'list'
+      data.currentView = 'list'
     '/list': ->
-      app.item = app.init()
-      app.currentView = 'list'
+      data.currentView = 'list'
     '/new': ->
-      app.item = app.init()
-      app.currentView = 'new'
+      data.item = app.init()
+      data.currentView = 'new'
     '/edit/:id': (id) ->
-      app.currentView = 'edit'
-      app.item = _.findWhere app.items, {id: Number(id)}
+      data.currentView = 'edit'
+      data.item = app.find(id)
