@@ -64,7 +64,7 @@ var fs;
 
 
 Vue.component('input', {
-  template: "<div class=\"row\">\n  <div class=\"col-md-3 col-md-offset-3\">\n\n    <div class=\"alert alert-danger\" v-show=\"hasError\" v-effect=\"fadein\">\n      <p v-repeat=\"errors | filterBy '_'\">{{$value}}</p>\n    </div>\n\n    <form role=\"form\" v-on=\"submit:confirm\">\n      <div class=\"form-group\">\n\t<label for=\"name\">ユーザー名</label>\n\t<input type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"taro\" v-model=\"user.name\">\n      </div>\n      <div class=\"form-group\">\n\t<label for=\"email\">メールアドレス</label>\n\t<input type=\"email\" class=\"form-control\" id=\"email\" placeholder=\"address@example.com\" v-model=\"user.email\">\n      </div>\n      <div class=\"form-group\">\n\t<label for=\"password\">パスワード</label>\n\t<input type=\"password\" class=\"form-control\" id=\"password\" placeholder=\"Password\" v-model=\"user.password\">\n      </div>\n      <div class=\"form-group\">\n\t<label for=\"date\">誕生日</label>\n\t<input type=\"date\" class=\"form-control\" id=\"date\" placeholder=\"yyyy-mm-dd\" v-model=\"user.birthday\">\n      </div>\n      <input type=\"submit\" class=\"btn btn-default\" value=\"確認\">\n    </form>\n  </div>\n</div>\n"
+  template: "<div class=\"row\">\n  <div class=\"col-md-3 col-md-offset-3\">\n\n    <div class=\"alert alert-danger\" v-show=\"hasError\" v-effect=\"bounce\">\n      <div class=\"panel-heading\">\n\t<h3 class=\"panel-title\">入力内容を確認してください</h3>\n      </div>\n      <ul>\n\t<li v-repeat=\"errors | filterBy '_'\" v-show=\"$value\">{{$value}}</li>\n      </ul>\n    </div>\n\n    <form role=\"form\" v-on=\"submit:confirm\">\n      <div class=\"form-group\">\n\t<label for=\"name\">ユーザー名</label>\n\t<input type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"taro\" v-model=\"user.name\">\n      </div>\n      <div class=\"form-group\">\n\t<label for=\"email\">メールアドレス</label>\n\t<input type=\"email\" class=\"form-control\" id=\"email\" placeholder=\"address@example.com\" v-model=\"user.email\">\n      </div>\n      <div class=\"form-group\">\n\t<label for=\"password\">パスワード</label>\n\t<input type=\"password\" class=\"form-control\" id=\"password\" placeholder=\"Password\" v-model=\"user.password\">\n      </div>\n      <div class=\"form-group\">\n\t<label for=\"date\">誕生日</label>\n\t<input type=\"date\" class=\"form-control\" id=\"date\" placeholder=\"yyyy-mm-dd\" v-model=\"user.birthday\">\n      </div>\n      <input type=\"submit\" class=\"btn btn-default\" value=\"確認\">\n    </form>\n  </div>\n</div>\n"
 });
 
 Vue.component('confirm', {
@@ -80,6 +80,16 @@ Vue.component('complete', {
 Vue.effect('fadein', {
   enter: function(el, insert, timeout) {
     $(el).addClass('animated fadeIn');
+    return insert(el);
+  },
+  leave: function(el, remove, timeout) {
+    return remove(el);
+  }
+});
+
+Vue.effect('bounce', {
+  enter: function(el, insert, timeout) {
+    $(el).addClass('animated bounce');
     return insert(el);
   },
   leave: function(el, remove, timeout) {
