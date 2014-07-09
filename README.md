@@ -31,6 +31,10 @@ GroupWork ベースアプリ (VOYAGE GROUP)
 ## 設定
 
 - DB設定 ... アプリ用 (`src/config.php`) と マイグレーションツール用 (`.dbup/properties.ini`)
+    - それぞれ `src/config.template.php` と `.dbup/properties.template.ini` からひな形をコピーし、環境にあわせて書き換えてください
+
+            $ cp src/config.template.php src/config.php
+            $ cp .dbup/properties.template.ini .dbup/properties.ini
 
 ## Databaseの初期化
 
