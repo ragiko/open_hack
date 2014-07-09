@@ -13,4 +13,6 @@ components/*
 public_html/front/demo/vote-browserify/build/*
 public_html/front/demo/vote-component/build/*
 public_html/front/demo/vote-component/components/*
+src/config.php
+.dbup/properties.ini
 
