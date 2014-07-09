@@ -12,7 +12,7 @@ all: test
 
 setup:
 	$(PHP) -r "eval('?>'.file_get_contents('https://getcomposer.org/installer'));"
-	$(CURL) -SslO https://raw.github.com/brtriver/dbup/master/dbup.phar
+	$(CURL) -SslO https://raw.githubusercontent.com/brtriver/dbup/master/dbup.phar
 	$(CURL) -SslO http://cs.sensiolabs.org/get/php-cs-fixer.phar
 	$(CURL) -SslO https://phar.phpunit.de/phpunit.phar
 install: setup
