@@ -2,10 +2,10 @@
   "name": "group-work-base",
   "description": "scripts for Application",
   "dependencies": {
-    "vue": "0.10.4",
-    "jquery": "2.1.0",
+    "vue": "0.10.5",
+    "jquery": "2.1.1",
     "underscore": "1.6.0",
-    "bootstrap": "3.1.1",
+    "bootstrap": "3.2.0",
     "marked": "0.3.2",
     "todomvc-common": "0.1.9",
     "director": "1.2.2"
