@@ -19,6 +19,9 @@ install: setup
 	$(PHP) composer.phar install
 	$(NPM) install
 	$(BOWER) install
+copy-db-config:
+	cp src/config.template.php src/config.php
+	cp .dbup/properties.template.ini .dbup/properties.ini
 update:
 	$(PHP) composer.phar update
 test:
