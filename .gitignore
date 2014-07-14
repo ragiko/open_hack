@@ -11,8 +11,10 @@ public_html/bower_components/*
 node_modules/*
 components/*
 public_html/front/demo/vote-browserify/build/*
+public_html/front/demo/vote-browserify/test/test.js
 public_html/front/demo/vote-component/build/*
 public_html/front/demo/vote-component/components/*
+public_html/front/demo/register-browserify/build/*
 src/config.php
 .dbup/properties.ini
 
