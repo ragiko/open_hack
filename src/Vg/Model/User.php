@@ -1,8 +1,6 @@
 <?php
 namespace Vg\Model;
 
-use Vg\Model\Stretcher;
-
 class User
 {
     public $id;

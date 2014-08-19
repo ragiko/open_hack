@@ -14,7 +14,6 @@ GroupWork ベースアプリ (VOYAGE GROUP)
 
 * Slim2
 * Twig
-* Pimple2
 * PHPUnit
 
 * Vue.js

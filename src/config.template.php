@@ -1,22 +1,22 @@
 <?php
+require __DIR__ .'/../vendor/autoload.php';
 /**
  * このファイルでコンテナに設定項目を定義する
  */
 
-// see also: http://pimple.sensiolabs.org/
-$container = new Pimple();
+$app = new Slim();
 
 /**
  * ここでアプリケーションが利用する項目を設定する
  */
-DB設定 :{
-    $container['db.host']     = 'localhost';
-    $container['db.database'] = 'groupwork';
-    $container['db.user']     = 'demouser';
-    $container['db.password'] = 'demopass';
-}
-テンプレート設定: {
-    $container['twig.templateDir'] = __DIR__ . '/views';
-}
 
-return $container;
+// DB設定
+$app->container['db.host']     = 'localhost';
+$app->container['db.database'] = 'groupwork';
+$app->container['db.user']     = 'demouser';
+$app->container['db.password'] = 'demopass';
+
+// twig設定
+$app->container['twig.templateDir'] = __DIR__ . '/views';
+
+return $app;

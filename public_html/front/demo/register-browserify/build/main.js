@@ -107,4 +107,4 @@ require('./component.coffee');
 window.app = require('./app.coffee')();
 
 
-},{"./app.coffee":1,"./component.coffee":2,"./effect.coffee":3}]},{},[4])
+},{"./app.coffee":1,"./component.coffee":2,"./effect.coffee":3}]},{},[4]);
