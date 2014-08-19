@@ -2,7 +2,6 @@
     "name": "vg-tech-dojo/group-work-base",
     "require": {
         "php": ">=5.4.0",
-        "pimple/pimple": "v2.0.0",
         "slim/slim": "2.4.3",
         "slim/views": "0.1.2",
         "twig/twig": "v1.15.1",

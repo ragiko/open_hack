@@ -4,10 +4,10 @@
  */
 
 // json response を返すために用意したメソッドの準備
-$jsonResponse = $container['response.json']($app->response);
+$jsonResponse = $app->container['response.json']($app->response);
 
 // AJAXのリクエスト以外は400エラー
-$haltUnlessAjaxRequest = function() use ($app){
+$haltUnlessAjaxRequest = function () use ($app) {
     if (!$app->request->isAjax()) {
         $app->halt('denied', 400);
     }
@@ -16,7 +16,7 @@ $haltUnlessAjaxRequest = function() use ($app){
 /**
  * ユーザー一覧
  */
-$app->get('/api/sample/users', $haltUnlessAjaxRequest, function() use ($jsonResponse) {
+$app->get('/api/sample/users', $haltUnlessAjaxRequest, function () use ($jsonResponse) {
         $data = [
             ['name' => 'taro', 'email' => 'taro@example.com'],
             ['name' => 'hanako', 'email' => 'hanako@example.com'],
@@ -25,7 +25,7 @@ $app->get('/api/sample/users', $haltUnlessAjaxRequest, function() use ($jsonResp
         $jsonResponse($data);
     });
 
-$errorIfInvalidNewUser = function($input) use ($app, $jsonResponse){
+$errorIfInvalidNewUser = function ($input) use ($app, $jsonResponse) {
     $validator = new \Vg\Validator\UserRegister();
     if (!$validator->validate($input)) {
         $jsonResponse($validator->errors(), 400);
@@ -38,7 +38,7 @@ $errorIfInvalidNewUser = function($input) use ($app, $jsonResponse){
 /**
  * API ユーザー登録のバリデーションサンプル(確認画面)
  */
-$app->put('/api/sample/user', $haltUnlessAjaxRequest, function() use ($app, $container, $jsonResponse, $errorIfInvalidNewUser) {
+$app->put('/api/sample/user', $haltUnlessAjaxRequest, function () use ($app, $jsonResponse, $errorIfInvalidNewUser) {
 
         $input = $app->request()->post();
         $errorIfInvalidNewUser($input);
@@ -48,7 +48,7 @@ $app->put('/api/sample/user', $haltUnlessAjaxRequest, function() use ($app, $con
 /**
  * API ユーザー登録のサンプル
  */
-$app->post('/api/sample/user', $haltUnlessAjaxRequest, function() use ($app, $container, $jsonResponse, $errorIfInvalidNewUser) {
+$app->post('/api/sample/user', $haltUnlessAjaxRequest, function () use ($app, $jsonResponse, $errorIfInvalidNewUser) {
 
         $input = $app->request()->post();
         $errorIfInvalidNewUser($input);
@@ -56,7 +56,7 @@ $app->post('/api/sample/user', $haltUnlessAjaxRequest, function() use ($app, $co
         $user = new \Vg\Model\User();
         $user->setProperties($input);
 
-        $repository = $container['repository.user'];
+        $repository = $app->container['repository.user'];
         try {
             $repository->insert($user);
         } catch (Exception $e) {
@@ -70,9 +70,9 @@ $app->post('/api/sample/user', $haltUnlessAjaxRequest, function() use ($app, $co
  * アクセスしているユーザ名を返すAPI
  * GroupWorkBase Front の右上にユーザー名を表示する処理で使用
  */
-$app->get('/api/sample/me', $haltUnlessAjaxRequest, function() use ($jsonResponse, $container) {
-        $repository = $container['repository.user'];
-        $user = $repository->findById($container['session']->get('user.id'));
+$app->get('/api/sample/me', $haltUnlessAjaxRequest, function () use ($jsonResponse, $app) {
+        $repository = $app->container['repository.user'];
+        $user = $repository->findById($app->container['session']->get('user.id'));
         if ($user->id) {
             $jsonResponse($user->name);
         } else {
@@ -80,4 +80,3 @@ $app->get('/api/sample/me', $haltUnlessAjaxRequest, function() use ($jsonRespons
             $jsonResponse([], 401);
         }
     });
-
