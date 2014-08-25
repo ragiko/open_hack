@@ -4,7 +4,7 @@ require __DIR__ .'/../vendor/autoload.php';
  * このファイルでコンテナに設定項目を定義する
  */
 
-$app = new Slim();
+$app = new \Slim\Slim();
 
 /**
  * ここでアプリケーションが利用する項目を設定する
