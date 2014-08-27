@@ -18,8 +18,8 @@
 
     <div id="main">
       <button type="button" id="start">ガチャ</button>
-      <h4 id="result" style="color: red"></h4>
-
+      <h4 id="result" v-on="click:gacha();" style="color: red"></h4>
+      {{result}}
       <h4>まだコレクションできていないアルファベット</h4>
       <div id="rest"></div>
 
@@ -32,12 +32,20 @@
     <script  type="text/javascript" src="gacha1.js"></script>
     <script src="/bower_components/vue/dist/vue.js"></script>
     <script>
+     var alpha = ('abcdefghijklmnopqrstuvwxyz').split('');
      (function(Vue){
       window.app = new Vue({
        el: '#main',
        data:{
-         his: 'aaa'
+         his: '履歴表示',
+         result: 1
+       },
+       methods: {
+         gacha: function() {
+           this.$data.result++;
+         } 
        }
+  
       });
      })(Vue);
     </script>
