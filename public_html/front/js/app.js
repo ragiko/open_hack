@@ -22,10 +22,13 @@
       },
       // event のデモで利用する total
       total: 100,
+      //2倍にする
+      twice: 2,
       // api のデモで利用する commits
       commits: [],
       // ユーザー一覧
-      users: []
+      users: [],
+      
     },
     ready: function(){
       this.fetchUser();
@@ -38,6 +41,10 @@
       // 減算
       minus: function() {
         this.$data.total--;
+      },
+      // 2倍する
+      twice: function() {
+        this.$data.twice++;
       },
       // jQueryを使ったXHR
       fetchData: function () {

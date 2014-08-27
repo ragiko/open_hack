@@ -1,0 +1,45 @@
+<html>
+  <body>
+    <h3>アルファベット コレクション (ガチャ)</h3>
+    <div id="rule">
+      <h4>仕様1</h4>
+      <ul>
+        <li>アルファベット(a-z)から1つをランダムでガチャする機能を実装してください</li>
+        <li>どのアルファベットが選ばれるかの確率は全て同じとします</li>
+        <li>ガチャボタンを押すと選んだガチャがid=resultのh4に表示されるようにしてください</li>
+        <li>引いたガチャはid=historiesにガチャをした降順で表示されるようにしてください</li>
+        <li>まだコンプリートできていないアルファベットをid=rest領域に表示してください</li>
+      </ul>
+      <h4>仕様2</h4>
+      <ul>
+        <li>通常よりも5倍レアなA,B,Cを追加してください</li>
+      </ul>
+    </div>
+
+    <div id="main">
+      <button type="button" id="start">ガチャ</button>
+      <h4 id="result" style="color: red"></h4>
+
+      <h4>まだコレクションできていないアルファベット</h4>
+      <div id="rest"></div>
+
+      <h4>ガチャ履歴</h4>
+      <ul id="histories"></ul>
+      {{his}}
+    </div>
+
+    <script  type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script  type="text/javascript" src="gacha1.js"></script>
+    <script src="/bower_components/vue/dist/vue.js"></script>
+    <script>
+     (function(Vue){
+      window.app = new Vue({
+       el: '#main',
+       data:{
+         his: 'aaa'
+       }
+      });
+     })(Vue);
+    </script>
+  </body>
+</html>
