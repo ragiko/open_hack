@@ -1,51 +1,51 @@
 <html>
   <body>
     <h3>アルファベット コレクション (ガチャ)</h3>
-    <div id="rule">
-      <h4>仕様1</h4>
-      <ul>
-        <li>アルファベット(a-z)から1つをランダムでガチャする機能を実装してください</li>
-        <li>どのアルファベットが選ばれるかの確率は全て同じとします</li>
-        <li>ガチャボタンを押すと選んだガチャがid=resultのh4に表示されるようにしてください</li>
-        <li>引いたガチャはid=historiesにガチャをした降順で表示されるようにしてください</li>
-        <li>まだコンプリートできていないアルファベットをid=rest領域に表示してください</li>
-      </ul>
-      <h4>仕様2</h4>
-      <ul>
-        <li>通常よりも5倍レアなA,B,Cを追加してください</li>
-      </ul>
-    </div>
 
     <div id="main">
-      <button type="button" id="start">ガチャ</button>
-      <h4 id="result" v-on="click:gacha();" style="color: red"></h4>
+      <button type="button" v-on="click: gacha()" id="start">ガチャ</button>
+      <h4 id="result" style="color: red"></h4>
       {{result}}
       <h4>まだコレクションできていないアルファベット</h4>
       <div id="rest"></div>
-
+      {{collection}}
       <h4>ガチャ履歴</h4>
-      <ul id="histories"></ul>
-      {{his}}
+      <ul id="histories"><li>{{his}}</li></ul>
     </div>
 
     <script  type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script  type="text/javascript" src="gacha1.js"></script>
     <script src="/bower_components/vue/dist/vue.js"></script>
     <script>
-     var alpha = ('abcdefghijklmnopqrstuvwxyz').split('');
      (function(Vue){
       window.app = new Vue({
        el: '#main',
        data:{
-         his: '履歴表示',
-         result: 1
+         his: [],
+         collection: [],
+         result: ''
        },
+       ready: function(){
+          this.result = 'a';
+          this.collection = {a:0,b:0,c:0,d:0,i:1};
+        },
        methods: {
-         gacha: function() {
-           this.$data.result++;
-         } 
+        //過去の履歴を表示
+        gacha: function() {
+           var item = this.draw();
+           this.result = item;
+           this.addHistory(item,this.his);
+           this.collect(this.collection,this.result);
+         },
+         draw: function() {
+           return 'i';
+         },
+         addHistory: function(item,his){
+           this.his.unshift(item);
+         },
+         collect: function(collection,result){
+           this.collection.$set('a',1);
+         }
        }
-  
       });
      })(Vue);
     </script>
