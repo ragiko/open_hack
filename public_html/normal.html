@@ -49,6 +49,7 @@
         </ul>
       </div>
       <div id="histories">
+        <h3>ガチャ履歴</h3>
         <p v-text="hist"></p>
       </div>
 	   <footer>
@@ -64,6 +65,7 @@
         window.app = new Vue({
           el: '#main',
           data:{
+            item: '',
             hist:[],
             collection:[],
             result:'',
@@ -89,24 +91,23 @@
           },
           methods: {
             gacha: function() {
-              var item = this.draw();
-              this.result = item;
-              this.addHistory(item);
+              this.draw();
+              this.result = this.item;
+              this.addHistory(this.item);
             },
-            draw: function() {
-              var kekka = [];  
+            draw: function() { 
               var jqxhr = $.ajax({
                 url: 'fishGet.json',
                 context: this,
                 dataType: 'json'
               })
               .done(function(jqxhr){
-                kekka.push(jqxhr.key);
+              this.item = jqxhr.key;
+              return jqxhr.key;
               })
               .fail(function(){
                 this.error = 'ガチャが壊れた.';
               });
-              return kekka;
             },
             addHistory: function(item){
               this.hist.unshift(item);
