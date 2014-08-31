@@ -1,0 +1,53 @@
+<html>
+  <body>
+    <h3>アルファベット コレクション (ガチャ)</h3>
+
+    <div id="main">
+      <button type="button" v-on="click: gacha()" id="start">ガチャ</button>
+      <h4 id="result" style="color: red"></h4>
+      {{result}}
+      <h4>まだコレクションできていないアルファベット</h4>
+      <div id="rest"></div>
+      {{collection}}
+      <h4>ガチャ履歴</h4>
+      <ul id="histories"><li>{{his}}</li></ul>
+    </div>
+
+    <script  type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="/bower_components/vue/dist/vue.js"></script>
+    <script>
+     (function(Vue){
+      window.app = new Vue({
+       el: '#main',
+       data:{
+         his: [],
+         collection: [],
+         result: ''
+       },
+       ready: function(){
+          this.result = 'a';
+          this.collection = {a:0,b:0,c:0,d:0,i:1};
+        },
+       methods: {
+        //過去の履歴を表示
+        gacha: function() {
+           var item = this.draw();
+           this.result = item;
+           this.addHistory(item,this.his);
+           this.collect(this.collection,this.result);
+         },
+         draw: function() {
+           return 'i';
+         },
+         addHistory: function(item,his){
+           this.his.unshift(item);
+         },
+         collect: function(collection,result){
+           this.collection.$set('a',1);
+         }
+       }
+      });
+     })(Vue);
+    </script>
+  </body>
+</html>

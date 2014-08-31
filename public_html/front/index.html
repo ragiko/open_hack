@@ -145,6 +145,10 @@
 	  <button v-on="click: plus()">+1</button>
 	  <button v-on="click: minus()">-1</button>
 	</p>
+        <p>
+          2倍:{{twice}}
+          <button v-on="click: twice()">2倍</button>
+        </p>
 	<p>
 	  jQueryで同じような処理をやろうとすると、どのDOMなのかをjQueryで書いたコードで探す必要がありますが、Vueを使うとDOMのことは気にしなくて済むというメリットがあります。
 	</p>
