@@ -44,7 +44,7 @@
       </div>
       <div id="rare_eria">
         <h3>未取得ガチャ</h3>
-        <ul v-text="collection">
+        <ul v-text="allList">
           <li></li>
         </ul>
       </div>
@@ -67,6 +67,7 @@
           data:{
             item: '',
             hist:[],
+            allList:[],
             collection:[],
             result:'',
             error:''
@@ -79,7 +80,7 @@
             })
             .done(function(jqxhr){
               for(var i in jqxhr){
-                this.collection.push(jqxhr[i].key);
+                this.allList.push(jqxhr[i].key);
               }
             })
             .fail(function(){
@@ -92,7 +93,7 @@
               this.draw();
               this.result = this.item;
               this.addHistory(this.item);
-              this.list(this.collection);
+              this.list(this.allList);
             },
             draw: function() { 
               var jqxhr = $.ajax({
@@ -111,9 +112,13 @@
             addHistory: function(item){
               this.hist.unshift(item);
             },
-            list: function(collection){
-              
-              console.log(this.collection[0]);
+            list: function(allList){
+              for(var i in allList){
+                if (allList[i].value == 0) {
+                  this.collection.push(allList[i].key);
+                };
+              }
+              console.log(this.collection);
             },
           }
         });
