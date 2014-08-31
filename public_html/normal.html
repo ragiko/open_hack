@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -44,6 +43,7 @@
          <button class="btn bttn-lg btn-default" v-on="click: gacha()">ガチャ！</button>
       </div>
       <div id="rare_eria">
+        <h3>未取得ガチャ</h3>
         <ul v-text="collection">
           <li></li>
         </ul>
@@ -79,10 +79,8 @@
             })
             .done(function(jqxhr){
               for(var i in jqxhr){
-              if (jqxhr[i].value == 0) {
                 this.collection.push(jqxhr[i].key);
-              };
-            }
+              }
             })
             .fail(function(){
               this.error = 'ガチャは使えません。';
@@ -94,6 +92,7 @@
               this.draw();
               this.result = this.item;
               this.addHistory(this.item);
+              this.list(this.collection);
             },
             draw: function() { 
               var jqxhr = $.ajax({
@@ -111,6 +110,10 @@
             },
             addHistory: function(item){
               this.hist.unshift(item);
+            },
+            list: function(collection){
+              
+              console.log(this.collection[0]);
             },
           }
         });

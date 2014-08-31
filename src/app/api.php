@@ -35,6 +35,29 @@ $errorIfInvalidNewUser = function ($input) use ($app, $jsonResponse) {
     return true;
 };
 
+//fishgacgajson
+
+$app->get('/api/fishgachas', $haltUnlessAjaxRequest, function () use ($jsonResponse) {
+        $data = [
+            ['key' => 'ぶり', 'value' => '0'],
+            ['key' => 'かに', 'value' => '0'],
+            ['key' => 'えび', 'value' => '0'],
+            ['key' => 'さわら', 'value' => '0'],
+            ['key' => 'うに', 'value' => '0'],
+            ['key' => 'さざえ', 'value' => '0'],
+            ['key' => 'マグロ', 'value' => '0'],
+            ['key' => 'さんま', 'value' => '0'],
+            ['key' => 'タイ', 'value' => '0'],
+            ['key' => 'イカ', 'value' => '0'],
+            ['key' => 'たこ', 'value' => '0'],
+            ['key' => 'メガマウス', 'value' => '0'],
+            ['key' => 'リュウグウノツカイ', 'value' => '0']
+            ];
+
+        $jsonResponse($data);
+    });
+
+
 /**
  * API ユーザー登録のバリデーションサンプル(確認画面)
  */
