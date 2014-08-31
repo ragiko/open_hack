@@ -11,8 +11,6 @@ require  __DIR__ . '/../src/app/welcome.php';
 require  __DIR__ . '/../src/app/document.php';
 require  __DIR__ . '/../src/app/user.php';
 require  __DIR__ . '/../src/app/api.php';
-require  __DIR__ . '/../src/app/api.php';
-require  __DIR__ . '/../public_html/fishgacha/toppage.php';
-require  __DIR__ . '/../public_html/fishgacha/normal.php';
+
 $app->run();
 
