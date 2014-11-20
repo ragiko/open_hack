@@ -1,0 +1,64 @@
+{% extends 'layout.text.html.twig' %}
+
+{% block contents %}
+
+<form class="form-horizontal" role="form">
+    <div class="form-group">
+    <label for="inputPassword" class="col-sm-2 control-label">学部</label>
+    <div class="col-sm-6">
+        <select class="form-control input-sm">
+            <option value="test">工学部</option>
+            <option value="test1">教育学部</option>
+            <option value="test1">応用生物学部</option>
+            <option value="test1">その他</option>
+        </select>
+    </div>
+  </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">価格帯</label>
+      <div class="col-sm-6">
+          <a href="" class="" role="button">有料</a><span> | </span>
+          <a href="" class="" role="button">無料</a>
+      </div>
+  </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">フリーワード検索</label>
+      <div class="col-sm-6">
+          <input class="form-control input-sm" type="text" placeholder="教科書の名前を検索">
+      </div>
+  </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label"></label>
+      <div class="col-sm-6">
+        <a href="" class="btn btn-primary" role="button">検索</a>
+      </div>
+  </div>
+</form>
+
+<hr />
+
+<div class="texts">
+    <div class="row">
+      <div class="col-sm-2">
+          <a href="">
+             <img src="http://ecx.images-amazon.com/images/I/51W1CK22PBL.jpg" class="img-responsive img-rounded" alt="Responsive image">
+             <span>羅生門 蜘蛛の糸 杜子春 外十八篇 (文春文庫―現代日本文学館)</span>
+          </a><br />
+          <span>芥川 龍之介</span><br/>
+          <span style="color: red">0円</span>
+          <a href="" style="color: gray; font-size: 10px;">工学部</a><br/>
+          <span style="color: gray; font-size: 10px;">11月1日</span><br/>
+      </div>
+      <div class="col-sm-2">
+          <a href="">
+             <img src="http://ecx.images-amazon.com/images/I/419zswJ0snL.jpg" class="img-responsive img-rounded" alt="Responsive image">
+             <span>基礎から学ぶ労働法</span>
+          </a><br />
+          <span>藤本 茂</span><br/>
+          <span style="color: red">0円</span>
+          <a href="" style="color: gray; font-size: 10px;">教育学部</a><br/>
+          <span style="color: gray; font-size: 10px;">11月1日</span><br/>
+      </div>
+    </div>
+</div>
+{% endblock %}
