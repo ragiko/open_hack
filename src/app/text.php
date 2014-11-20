@@ -20,6 +20,14 @@ $app->get('/text/post', function () use ($app) {
     ->name('text-post')
 ;
 
+$app->get('/text/view', function () use ($app) {
+        $app->render('text/view.html.twig');
+    })
+    ->name('text-view')
+;
+
+
+
 
 /**
  * Demo 用
