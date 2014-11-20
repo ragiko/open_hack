@@ -20,12 +20,26 @@ $app->get('/text/post', function () use ($app) {
     ->name('text-post')
 ;
 
+
+$app->get('/text/post2', function () use ($app) {
+        $app->render('text/post2.html.twig');
+    })
+    ->name('text-post2')
+;
+
+
 $app->get('/text/view', function () use ($app) {
         $app->render('text/view.html.twig');
     })
     ->name('text-view')
 ;
 
+
+$app->get('/text/profile', function () use ($app) {
+        $app->render('text/profile.html.twig');
+    })
+    ->name('text-profile')
+;
 
 
 

@@ -2,11 +2,19 @@
 
 {% block contents %}
 
+
+
 <form class="form-horizontal" role="form">
   <div class="form-group">
       <label class="col-sm-2 control-label">大学</label>
       <div class="col-sm-6">
-          <p>岐阜大学</p>
+          <p>岐阜大学 <a href="">[変更]</a></p>
+      </div>
+  </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">電話番号</label>
+      <div class="col-sm-6">
+          <p>09012345678 <a href="">[変更]</a></p>
       </div>
   </div>
   <div class="form-group">
@@ -23,7 +31,14 @@
   <div class="form-group">
       <label class="col-sm-2 control-label">タイトル</label>
       <div class="col-sm-6">
-          <input class="form-control input-sm" type="text" placeholder="教科書のタイトルを入力">
+          <input class="form-control input-sm" type="text" placeholder="教科書のタイトルを入力"><br>
+          <a href="" class="btn btn-primary" role="button">Amazonからタイトル・画像を検索</a>
+      </div>
+  </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">画像</label>
+      <div class="col-sm-6">
+          <input type="file" id="take-picture" accept="image/*">
       </div>
   </div>
   <div class="form-group">
@@ -36,12 +51,6 @@
       <label class="col-sm-2 control-label">価格</label>
       <div class="col-sm-6">
           <input class="form-control input-sm" type="text" placeholder="〜円">
-      </div>
-  </div>
-  <div class="form-group">
-      <label class="col-sm-2 control-label">電話番号</label>
-      <div class="col-sm-6">
-          <input class="form-control input-sm" type="text" placeholder="09012345678">
       </div>
   </div>
   <div class="form-group">

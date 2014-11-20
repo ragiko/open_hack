@@ -47,11 +47,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{{ urlFor('text-top') }}">岐阜大学</a>
+          <a class="navbar-brand" href="{{ urlFor('text-top') }}">At 岐阜大学</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-              <li><a href="" >プロフィール</a></li>
+              <li><a href="{{ urlFor('text-signin') }}" >サインイン</a></li>
+              <li><a href="{{ urlFor('text-profile') }}" >プロフィール</a></li>
               <li><a style="color: white;" href="{{ urlFor('text-post') }}" class="btn btn-primary" role="button">投稿</a></li>
           </ul>
         </div><!--/.nav-collapse -->

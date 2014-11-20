@@ -1,0 +1,39 @@
+{% extends 'layout.text.html.twig' %}
+
+{% block contents %}
+<h2>投稿者にSMSでお問い合わせ</h2>
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+      <label class="col-sm-2 control-label">質問内容</label>
+      <div class="col-sm-8">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="">
+            購入を検討したいと考えています。購入可能かご相談させてください。 
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="">
+            品物の状態をより詳しく知りたいです。教えていただけないでしょうか
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="">
+            品物の受け渡し方法を相談したいです。ご相談できますでしょうか。
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="">
+            以下のことを相談させてください。
+          </label>
+        </div>
+        <input class="form-control input-sm" type="text" placeholder="質問事項">
+        <a href="" class="btn btn-primary" role="button">送信</a>
+      </div>
+  </div>
+</form>
+
+{% endblock %}
