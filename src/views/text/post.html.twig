@@ -1,0 +1,56 @@
+{% extends 'layout.text.html.twig' %}
+
+{% block contents %}
+
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+      <label class="col-sm-2 control-label">大学</label>
+      <div class="col-sm-6">
+          <p>岐阜大学</p>
+      </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword" class="col-sm-2 control-label">学部</label>
+    <div class="col-sm-6">
+        <select class="form-control input-sm">
+            <option value="test">工学部</option>
+            <option value="test1">教育学部</option>
+            <option value="test1">応用生物学部</option>
+            <option value="test1">その他</option>
+        </select>
+    </div>
+  </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">タイトル</label>
+      <div class="col-sm-6">
+          <input class="form-control input-sm" type="text" placeholder="教科書のタイトルを入力">
+      </div>
+  </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">内容</label>
+      <div class="col-sm-6">
+          <textarea class="form-control" rows="3"></textarea>
+      </div>
+  </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">価格</label>
+      <div class="col-sm-6">
+          <input class="form-control input-sm" type="text" placeholder="〜円">
+      </div>
+  </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label">電話番号</label>
+      <div class="col-sm-6">
+          <input class="form-control input-sm" type="text" placeholder="09012345678">
+      </div>
+  </div>
+  <div class="form-group">
+      <label class="col-sm-2 control-label"></label>
+      <div class="col-sm-4">
+          <a href="" class="btn btn-primary" role="button">投稿</a>
+          <a href="" class="btn btn-primary" role="button">連続して投稿</a>
+      </div>
+  </div>
+</form>
+
+{% endblock %}

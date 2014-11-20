@@ -15,7 +15,7 @@ $app->get('/text/top', function () use ($app) {
 ;
 
 $app->get('/text/post', function () use ($app) {
-        $app->render('text/top.html.twig');
+        $app->render('text/post.html.twig');
     })
     ->name('text-post')
 ;
